@@ -12,6 +12,5 @@
  *
  *= require custom
  *= require fonts
- *= require_tree .
  *= require_self
  */
