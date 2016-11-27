@@ -12,5 +12,22 @@
  *
  *= require custom
  *= require fonts
+ *= require index
  *= require_self
  */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+#page {
+  width: 100%;
+}
+
+#header {
+  position:fixed;
+  width:20%;
+}
+
+#main {
+  width:80%;
+}
