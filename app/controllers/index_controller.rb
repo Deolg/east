@@ -1,6 +1,9 @@
 class IndexController < ApplicationController
   def index
     @request = Request.new
+    @article_items = ArticleItem.all
+    @service_items = ServiceItem.all
+    @company_types = CompanyType.all
   end
 
   def create_request

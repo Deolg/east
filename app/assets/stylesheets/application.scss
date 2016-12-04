@@ -18,7 +18,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-
 #page {
   width: 100%;
 }
@@ -31,3 +30,25 @@
 #main {
   width:80%;
 }
+
+#welcome {
+  margin-bottom: 10%;
+}
+
+ul.style1 {
+  width: 100%;
+  margin:initial;
+}
+
+ul.style1 li {
+  text-align: -webkit-center;
+}
+
+table.companies th {
+  text-align: -webkit-center;
+}
+
+.first-box{padding:10px;background:#9C0;}
+.second-box{padding:10px; background:#39F;}
+.third-box{padding:10px;background:#F66;}
+.fourth-box{padding:10px;background:#6CC;}

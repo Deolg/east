@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161127193319) do
+ActiveRecord::Schema.define(version: 20161128154810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,16 +49,18 @@ ActiveRecord::Schema.define(version: 20161127193319) do
   create_table "article_items", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.integer  "menu_item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "menu_items", force: :cascade do |t|
-    t.string   "name",        null: false
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+  create_table "company_types", force: :cascade do |t|
+    t.string   "form"
+    t.text     "capital"
+    t.text     "heads"
+    t.text     "responsibility"
+    t.text     "management"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "requests", force: :cascade do |t|
@@ -81,6 +83,12 @@ ActiveRecord::Schema.define(version: 20161127193319) do
     t.integer  "owner_id"
     t.text     "uri_cache"
     t.string   "simplified_type",        default: "file"
+  end
+
+  create_table "service_items", force: :cascade do |t|
+    t.string   "service_name"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
 end

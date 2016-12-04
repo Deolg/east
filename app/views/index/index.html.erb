@@ -17,86 +17,29 @@
       <img src="static/images/pic01.jpg" alt="" class="image-full" />
     </div>
     <div id="welcome">
-      <div class="title">
-        <h2>Эстония - самая благоприятная среда для бизнеса в ЕС</h2>
-        <!-- <span class="byline">Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue</span> -->
-      </div>
-      <div class='text'>
-        <p>Фирма в Эстонии это: реализация товаров и услуг под эстонской европейской маркой, возможность ввозить в СНГ оборудование, технику, товары без таможенных пошлин и НДС, как уставной капитал совместного предприятия, деньги, вложенные в бизнес в СНГ вашей эстонской фирмой, будут надежно защищены как иностранные инвестиции, счета в эстонских филиалах иностранных банков с управлением онлайн, возможность получения вида на жительство в Эстонии владельцам, членам правления, директорам эстонских фирм, членам их семей, в дальнейшем получения статуса постоянного жителя ЕС через предпринимательство, открытие филиалов эстонской компании в Евросоюзе, бизнес-визы в Эстонию — во все страны Шенгена, кредиты в местных банках, дистанционная регистрация без вашего присутствия. Учитывая выгодное географическое положение, Эстония представляет собой очень удобное для ведения бизнеса государство. Находясь между Россией и западноевропейскими странами, она стала прекрасной транзитной зоной.</p>
-        <p>Но плюсы открытия бизнеса в Эстонии не исчерпываются одним лишь её географическим положением. Чрезвычайно привлекательным является тот факт, что с 2000 года в Эстонии введена 0%-ая ставка корпоративного налога на прибыль юридических лиц. Это выгодно прежде всего тем предпринимателям, которые используют полученный доход не для выплат физическим лицам, а для вложения в дальнейшее развитие бизнеса.</p>
-        <p>Наши специалисты с удовольствием примут активное участие в создании Вашего бизнеса.
-        Мы предлагаем исключительное качество обслуживания вашей организации на всех стадиях её регистрации и существования.
-        У нас вы можете заказать как разовые консультационные услуги, так и комплексное сопровождение всех юридически значимых моментов.
-        </p>
-      </div>
-
-      <div class="title">
-        <h2>Зарегистрируйте фирму в Эстонии — это выгодно и удобно!</h2>
-        <!-- <span class="byline">Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue</span> -->
-      </div>
-      <div class='text'>
-        <p>Коротко о том, что дает регистрация фирмы в Эстонии:</p>
-        <ul>
-          <li>возможность использования маркировки на товарах «сделано в ЕС»</li>
-          <li>развитый интернет-банкинг и возможность управлять счетами фирмы в Эстонии из любого места, где есть интернет</li>
-          <li>получение временного ВНЖ в Эстонии</li>
-          <li>работа в Ес не ограничена, есть возможность открывать европейские филиалы компании</li>
-          <li>можно оформить на фирму транспортное средство и вывозить его в 3-и страны по временному ввозу ( до 1 года)</li>
-          <li>отсутствие транспортного налога</li>
-          <li>возможность получения кредитов в местных филиалах европейских банков</li>
-          <li>учреждение фирмы по доверенности</li>
-          <li>оформление бизнес-виз для длительного пребывания на территории стран Шенгенского соглашения.</li>
-        </ul>
-      </div>
+      <% @article_items.each do |article| %>
+        <div class="title">
+          <h2><%= article.title %></h2>
+          <!-- <span class="byline">Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue</span> -->
+        </div>
+        <div class='text'>
+          <%= article.body.html_safe %>
+        </div>
+      <% end %>
     </div>
     <div id="services">
-      <div class="title">
+      <div class="title" style='margin-bottom:initial'>
         <h2>Наши услуги</h2>
         <span class="byline"></span>
       </div>
-      <ul class="style1">
-        <li class="first">
-          <!-- <p class="date"><a href="#">Jan<b>05</b></a></p> -->
-          <h3>открытие компании в Эстонии</h3>
-          <!-- <p><a href="#">Consectetuer adipiscing elit. Nam pede erat, porta eu, lobortis eget, tempus et, tellus. Etiam neque. Vivamus consequat lorem at nisl. Nullam non wisi a sem semper eleifend. Etiam non felis. Donec ut ante.</a></p> -->
-        </li>
-        <li>
-          <!-- <p class="date"><a href="#">Jan<b>03</b></a></p> -->
-          <h3>Разработка грамотного устава фирмы, с соблюдением всех предусмотренных законодательством Эстонии актов, устав оформляется по доверенности.</h3>
-          <!-- <p><a href="#">Etiam non felis. Donec ut ante. In id eros. Suspendisse lacus turpis, cursus egestas at sem. Mauris quam enim, molestie. Donec leo, vivamus fermentum nibh in augue praesent congue rutrum.</a></p> -->
-        </li>
-        <li>
-          <!-- <p class="date"><a href="#">Jan<b>01</b></a></p> -->
-          <h3>Оформление всех необходимых документов для регистрации компании “под ключ”</h3>
-          <!-- <p><a href="#">Consectetuer adipiscing elit. Nam pede erat, porta eu, lobortis eget, tempus et, tellus. Etiam neque. Vivamus consequat lorem at nisl. Nullam non wisi a sem semper eleifend. Etiam non felis. Donec ut ante.</a></p> -->
-        </li>
-        <li>
-          <!-- <p class="date"><a href="#">Dec<b>31</b></a></p> -->
-          <h3>Предоставление эстонского офиса для фирмы, Ваш юридический адрес на территории Эстонии.</h3>
-          <!-- <p><a href="#">Etiam non felis. Donec ut ante. In id eros. Suspendisse lacus turpis, cursus egestas at sem. Mauris quam enim, molestie. Donec leo, vivamus fermentum nibh in augue praesent congue rutrum.</a></p> -->
-        </li>
-
-        <li>
-          <!-- <p class="date"><a href="#">Dec<b>31</b></a></p> -->
-          <h3>Открытие в одном из банков, текущего банковского счета.</h3>
-          <!-- <p><a href="#">Etiam non felis. Donec ut ante. In id eros. Suspendisse lacus turpis, cursus egestas at sem. Mauris quam enim, molestie. Donec leo, vivamus fermentum nibh in augue praesent congue rutrum.</a></p> -->
-        </li>
-        <li>
-          <!-- <p class="date"><a href="#">Dec<b>31</b></a></p> -->
-          <h3>предоставление дальнейшего бухгалтерского сопровождения фирмы</h3>
-          <!-- <p><a href="#">Etiam non felis. Donec ut ante. In id eros. Suspendisse lacus turpis, cursus egestas at sem. Mauris quam enim, molestie. Donec leo, vivamus fermentum nibh in augue praesent congue rutrum.</a></p> -->
-        </li>
-        <li>
-          <!-- <p class="date"><a href="#">Dec<b>31</b></a></p> -->
-          <h3>юридические консультации</h3>
-          <!-- <p><a href="#">Etiam non felis. Donec ut ante. In id eros. Suspendisse lacus turpis, cursus egestas at sem. Mauris quam enim, molestie. Donec leo, vivamus fermentum nibh in augue praesent congue rutrum.</a></p> -->
-        </li>
-
-        <li>
-          <!-- <p class="date"><a href="#">Dec<b>31</b></a></p> -->
-          <h3>предоставление услуг инкассо на территориях стран Балтии (Эстония, Литва, Латвия, Финляндия, Норвегия, Швеция)</h3>
-          <!-- <p><a href="#">Etiam non felis. Donec ut ante. In id eros. Suspendisse lacus turpis, cursus egestas at sem. Mauris quam enim, molestie. Donec leo, vivamus fermentum nibh in augue praesent congue rutrum.</a></p> -->
-        </li>
+      <ul class="style1 services">
+        <% @service_items.each do |service| %>
+          <li>
+            <!-- <p class="date"><a href="#">Jan<b>05</b></a></p> -->
+            <h3><%= service.service_name %></h3>
+            <!-- <p><a href="#">Consectetuer adipiscing elit. Nam pede erat, porta eu, lobortis eget, tempus et, tellus. Etiam neque. Vivamus consequat lorem at nisl. Nullam non wisi a sem semper eleifend. Etiam non felis. Donec ut ante.</a></p> -->
+          </li>
+        <% end %>
       </ul>
     </div>
     <div id='#'>
@@ -106,78 +49,68 @@
 
       <div class='text'>
 
-        <table class="table table-hover table-inverse">
+        <table class="table table-hover table-inverse companies">
           <thead>
             <tr>
-              <th>Форма предпринимательской деятельности</th>
-              <th>Минимально необходимый начальный капитал (евро)</th>
+              <th style='text-align: -webkit-left;'>Форма предпринимательской деятельности</th>
+              <th>Минимально необходимый начальный капитал (EUR)</th>
               <th>Минимально необходимое число учредителей</th>
               <th>Имущественная ответственность</th>
               <th>Управление</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">ПФЛ</th>
-              <td>отсутствует</td>
-              <td>один</td>
-              <td>ПФЛ отвечает по обязательствам всем своим имуществом</td>
-              <td>Органы управления отсутствуют</td>
-            </tr>
-            <tr>
-              <th scope="row">Товарищество с ограниченной ответственностью</th>
-              <td>2500 евро или отсутствует, если запланированный паевой капитал не превышает 25 000 евро</td>
-              <td>один</td>
-              <td>Пайщик не отвечает лично по обязательствам товарищества с ограниченной ответственностью</td>
-              <td>Обязательным органом управления ТОО является правление. У ТОО должен быть совет только в случае, если это предусмотрено в уставе ТОО</td>
-            </tr>
-            <tr>
-              <th scope="row">Акционерное общество</th>
-              <td>25 000</td>
-              <td>один</td>
-              <td>Акционер не отвечает лично по обязательствам акционерного общества</td>
-              <td>Наивысшим органом управления акционерного общества является общее собрание акционеров. У акционерного общества должны быть правление и совет</td>
-            </tr>
-            <tr>
-              <th scope="row">Полное товарищество</th>
-              <td>отсутствует; размер взносов определяется договором товарищества</td>
-              <td>два</td>
-              <td>Пайщики несут по обязательствам объединения равную ответственность всем своим имуществом</td>
-              <td>Обязательные органы управления отсутствуют</td>
-            </tr>
-            <tr>
-              <th scope="row">Коммандитное товарищество</th>
-              <td>отсутствует; размер взносов определяется договором объединения</td>
-              <td>два</td>
-              <td>По меньшей мере, один пайщик полного товарищества отвечает по обязательствам коммерческого объединения всем своим имуществом; по меньшей мере, один пайщик коммандитного товарищества отвечает по обязательствам коммерческого объединения в размере внесенного взноса</td>
-              <td>Обязательные органы управления отсутствуют</td>
-            </tr>
-            <tr>
-              <th scope="row">Коммерческое товарищество</th>
-              <td>2500</td>
-              <td>два</td>
-              <td>Пайщик не отвечает лично по обязательствам коммерческого товарищества, если не оговорено иначе</td>
-              <td>Общее собрание является высшим органом товарищества, решения принимаются на голосовании, где у каждого члена товарищества имеется один голос. Правление является органом управления товарищества</td>
-            </tr>
+            <% @company_types.each do |type| %>
+              <tr>
+                <th scope="row"><%= type.form %></th>
+                <td><%= type.capital %></td>
+                <td><%= type.heads %></td>
+                <td><%= type.responsibility %></td>
+                <td><%= type.management %></td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
-        <p>Наиболее распространенные и простые формы: Товарищество с ограниченной ответственностью, АКЦИОНЕРНОЕ ОБЩЕСТВО</p>
+        <p>Наиболее распространенные и простые формы: <strong>Товарищество с ограниченной ответственностью</strong>, <strong>Акционерное общество</strong></p>
       </div>
     </div>
-    <div id='contacts'>
+    <div id='contacts' style='margin-top:10%'>
       <div class='title'>
        <h2>Контакты</h2>
       </div>
 
       <div class='text'>
-      <%= render 'request_form'%>
-
+        <%= render 'request_form'%>
+        <div class="container" style='margin-top:10%'>
+            <div class="row text-center">
+              <div class="col-sm-3 col-xs-6 first-box">
+                  <h1><span class="glyphicon glyphicon-earphone"></span></h1>
+                  <h3>Телефон</h3>
+                  <p>+880-1700-987654</p><br>
+              </div>
+              <div class="col-sm-3 col-xs-6 second-box">
+                  <h1><span class="glyphicon glyphicon-user"></span></h1>
+                  <h3>Skype</h3>
+                  <p>valeriya_tuyaskova</p><br>
+              </div>
+              <div class="col-sm-3 col-xs-6 third-box">
+                  <h1><span class="glyphicon glyphicon-send"></span></h1>
+                  <h3>E-mail</h3>
+                  <p><%= mail_to 'erezidency@gmail.com' %></p><br>
+              </div>
+              <div class="col-sm-3 col-xs-6 fourth-box">
+                <h1><span class="glyphicon glyphicon-comment"></span></h1>
+                  <h3>Viber</h3>
+                  <p>www.yourdomain.com</p><br>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
 
     <div id="copyright">
-      <span>&copy; Untitled. All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a></span>
-      <span>Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</span>
+      <span>&copy; Untitled. All rights reserved. | Photos by Fotogrph</span>
+      <span>Design by TEMPLATED</span>
     </div>
   </div>
   </div>
