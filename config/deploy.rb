@@ -10,6 +10,9 @@ set :branch, 'master'
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, '/eresidency'
 
+set :linked_files, %w{config/database.yml}
+set :linked_dirs, %w{log tmp/pids public/uploads public/assets public/system}
+
 # Default value for :scm is :git
 # set :scm, :git
 
