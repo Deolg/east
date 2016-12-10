@@ -7,7 +7,7 @@ set :rails_env, 'production'
  
 # server 'example.com', user: 'deploy', roles: %w{app db web}, my_property: :my_value
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
-server '46.101.129.180', user: 'root', roles: %w{app web db}
+server '46.101.129.180', user: 'eresident', roles: %w{app web db}
 set :deploy_via, :remote_cache
 set :ssh_options, {
   forward_agent: true,
