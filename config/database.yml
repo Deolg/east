@@ -13,8 +13,3 @@ production:
   <<: *default
   username: root
   database: est_production
-
-test:
-  <<: *default
-  username: obroshnij
-  database: est_test

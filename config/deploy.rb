@@ -8,7 +8,7 @@ set :branch, 'master'
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '/eresidency'
+set :deploy_to, '/root/eresidency'
 
 set :linked_files, %w{config/database.yml}
 set :linked_dirs, %w{log tmp/pids public/uploads public/assets public/system}
@@ -36,4 +36,4 @@ set :linked_dirs, %w{log tmp/pids public/uploads public/assets public/system}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 # Default value for keep_releases is 5
-set :keep_releases, 3
+# set :keep_releases, 3
