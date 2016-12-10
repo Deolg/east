@@ -5,8 +5,8 @@ default: &default
 
 development:
   <<: *default
-  username: root
-  # password: student4808
+  username: obroshnij
+  password: student4808
   database: est_dev
 
 production:
