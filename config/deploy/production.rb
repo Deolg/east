@@ -9,7 +9,10 @@ set :rails_env, 'production'
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 server '46.101.129.180', user: 'root', roles: %w{app web db}
  
- 
+set :ssh_options, {
+  forward_agent: true
+  # important! your current ssh port
+}
 # role-based syntax
 # ==================
  
