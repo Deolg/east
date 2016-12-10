@@ -35,6 +35,7 @@ gem 'paperclip'
 #gem 'rich', github: 'kreativgebiet/rich', ref: '3e92749ac77ee171bd6f0643d67b1579cc1c1271'
 gem 'ckeditor_rails'
 gem 'unicorn'
+gem 'capistrano3-unicorn'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
