@@ -1,17 +1,17 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  password: student4808
   pool: 5
 
 development:
   <<: *default
   username: obroshnij
+  password: student4808
   database: est_dev
 
 production:
   <<: *default
-  username: obroshnij
+  username: root
   database: est_production
 
 test:
