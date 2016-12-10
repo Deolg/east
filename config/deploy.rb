@@ -12,7 +12,7 @@ set :deploy_to, '/root/eresidency'
 
 set :linked_files, %w{config/database.yml}
 set :linked_dirs, %w{log tmp/pids public/uploads public/assets public/system}
-
+set :stages, %w(production)
 # Default value for :scm is :git
 # set :scm, :git
 
