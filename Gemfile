@@ -36,6 +36,7 @@ gem 'paperclip'
 gem 'ckeditor_rails'
 gem 'unicorn'
 gem 'capistrano3-unicorn'
+gem 'seed_dump'
 # gem 'listen', '~> 3.1.5'
 
 group :development, :test do
