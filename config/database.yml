@@ -11,5 +11,5 @@ development:
 
 production:
   <<: *default
-  username: root
+  username: deploy
   database: est_production

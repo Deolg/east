@@ -1,14 +1,14 @@
 # config valid only for current version of Capistrano
 lock '3.6.1'
 
-set :application, 'eresidency'
+set :application, 'deploy'
 set :repo_url, 'git@bitbucket.org:obroshnij/est.git'
 set :branch, 'master'
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '/home/eresident/eresidency'
+set :deploy_to, '/home/deploy/eresidency'
 
 set :linked_files, %w{config/database.yml}
 set :linked_dirs, %w{log tmp/pids public/uploads public/assets public/system}
