@@ -1,5 +1,5 @@
 AdminUser.create!([
-  {email: "admin@example.com", encrypted_password: "$2a$11$6c.WnJVLC4TYZL39x3ZvZ.ZYUFugCvfQQMzEvk7nU3OeOKR9ks/HO", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2016-11-28 15:46:22", last_sign_in_at: "2016-11-28 15:46:22", current_sign_in_ip: "::1", last_sign_in_ip: "::1"}
+  {email: "admin@example.com", encrypted_password: "$2a$11$4nbr.4FFkNJJblq0Nfch/.wM/V6qtzspWZwL0bNfPbRwtZJtZlPae", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 4, current_sign_in_at: "2017-01-03 18:28:35", last_sign_in_at: "2017-01-03 18:27:51", current_sign_in_ip: "::1", last_sign_in_ip: "::1"}
 ])
 ArticleItem.create!([
   {title: "Открытие фирмы в Европейской стране - отличное начало для бизнеса. Наша компания оказывает полный спектр услуг по учреждению, организации и развитию Вашего бизнеса в Эстонии.", body: ""},
