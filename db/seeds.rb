@@ -1,6 +1,4 @@
-AdminUser.create!([
-  {email: "admin@example.com", encrypted_password: "$2a$11$4nbr.4FFkNJJblq0Nfch/.wM/V6qtzspWZwL0bNfPbRwtZJtZlPae", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 4, current_sign_in_at: "2017-01-03 18:28:35", last_sign_in_at: "2017-01-03 18:27:51", current_sign_in_ip: "::1", last_sign_in_ip: "::1"}
-])
+AdminUser.create!([{email: "admin@example.com", password: "123456"}])
 ArticleItem.create!([
   {title: "Открытие фирмы в Европейской стране - отличное начало для бизнеса. Наша компания оказывает полный спектр услуг по учреждению, организации и развитию Вашего бизнеса в Эстонии.", body: ""},
   {title: "Особенности ведения бизнеса в Эстонии:", body: "<ul>\r\n\t<li>Налог на нераспределенную прибыль Эстонских компаний 0%</li>\r\n\t<li>Удобная банковская инфраструктура, интернет-банкинг, возможность открытия счета по доверенности</li>\r\n\t<li>Защита бизнеса и инвестиций на законодательном уровне</li>\r\n\t<li>Возможность оформления долгосрочной бизнес-визы</li>\r\n\t<li>Дистанционное открытие или приобретение компаний</li>\r\n\t<li>Собственниками и членами правления компаний могут быть нерезиденты Эстонии</li>\r\n\t<li>Получение E-residence - электронного гражданства Эстонии</li>\r\n</ul>\r\n"}
