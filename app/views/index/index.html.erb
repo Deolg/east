@@ -104,6 +104,7 @@
           </div>
         <% end %>
       </div>
+      <p><strong>Все цены указаны без НДС</strong></p>
     </div>
 
     <div id='contacts' style='margin-top:10%'>
@@ -118,29 +119,29 @@
               <div class="col-sm-3 col-xs-6 first-box">
                   <h1><span class="glyphicon glyphicon-earphone"></span></h1>
                   <h3>Телефон</h3>
-                  <p>+3725250757</p><br>
+                  <p><a href="tel:<%=@contacts.try(:phone)%>"><%=@contacts.phone%></a></p><br>
               </div>
               <div class="col-sm-3 col-xs-6 second-box">
                   <h1><span class="glyphicon glyphicon-user"></span></h1>
                   <h3>Skype</h3>
-                  <p>valeriya_tuyaskova</p><br>
+                  <p><a href="skype:<%=@contacts.try(:skype)%>?chat"><%=@contacts.skype%></a></p><br>
               </div>
               <div class="col-sm-3 col-xs-6 third-box">
                   <h1><span class="glyphicon glyphicon-send"></span></h1>
                   <h3>E-mail</h3>
-                  <p><%= mail_to 'erezidency@gmail.com' %></p><br>
+                  <p><%= mail_to @contacts.try(:mail) %></p><br>
               </div>
               <div class="col-sm-3 col-xs-6 fourth-box">
                 <h1><span class="glyphicon glyphicon-comment"></span></h1>
                   <h3>Viber</h3>
-                  <p>+380975273662</p><br>
+                  <p><%=@contacts.try(:viber)%></p><br>
               </div>
             </div>
           </div>
       </div>
     </div>
     <div id="copyright">
-      <span>E-residency</span>
+      <span style='text-transform: initial;font-size: 1em;'><%= @requisite.text.html_safe if @requisite %></span>
     </div>
   </div>
   </div>

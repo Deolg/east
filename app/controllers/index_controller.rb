@@ -6,6 +6,8 @@ class IndexController < ApplicationController
     @company_types = CompanyType.all.order(:created_at)
     @price_list = Price.all.order(:created_at)
     @why_we = Why.last
+    @requisite = Requisite.last
+    @contacts = Contact.last
   end
 
   def create_request
