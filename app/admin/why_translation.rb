@@ -1,9 +1,18 @@
-ActiveAdmin.register Why do
+ActiveAdmin.register WhyTranslation do
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-  permit_params :text
+  permit_params :why_id, :text
+
+  form do |f|
+    f.inputs "Why We translations" do
+      f.input :why_id, as: :select, collection: Why.all.pluck(:id), include_blank: false
+      f.input :language, as: :select, include_blank: false
+      f.input :text
+    end
+    f.actions
+  end
 #
 # or
 #
@@ -12,10 +21,6 @@ ActiveAdmin.register Why do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  form do |f|
-    f.inputs "Why we" do
-      f.input :text, input_html: { class: 'ckeditor' }
-    end
-    f.actions
-  end
+
+
 end

@@ -1,10 +1,10 @@
-ActiveAdmin.register Why do
+ActiveAdmin.register PriceTranslation do
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-  permit_params :text
-#
+  permit_params :price_id, :language, :item, :description
+  #
 # or
 #
 # permit_params do
@@ -13,9 +13,14 @@ ActiveAdmin.register Why do
 #   permitted
 # end
   form do |f|
-    f.inputs "Why we" do
-      f.input :text, input_html: { class: 'ckeditor' }
+    f.inputs "Price Translation" do
+      f.input :price_id, as: :select, collection: Price.all.pluck(:item), include_blank: false
+      f.input :language, as: :select, include_blank: false
+      f.input :item
+      f.input :description
     end
     f.actions
   end
+
+
 end

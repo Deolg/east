@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170114141005) do
+ActiveRecord::Schema.define(version: 20170311090853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,27 @@ ActiveRecord::Schema.define(version: 20170114141005) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "article_items_translations", force: :cascade do |t|
+    t.integer  "article_item_id"
+    t.integer  "language"
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "company_type_translations", force: :cascade do |t|
+    t.integer  "company_type_id"
+    t.integer  "language"
+    t.string   "form"
+    t.text     "capital"
+    t.text     "heads"
+    t.text     "responsibility"
+    t.text     "management"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "company_types", force: :cascade do |t|
     t.string   "form"
     t.text     "capital"
@@ -70,6 +91,15 @@ ActiveRecord::Schema.define(version: 20170114141005) do
     t.string   "viber"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "price_translations", force: :cascade do |t|
+    t.integer  "price_id"
+    t.integer  "language"
+    t.string   "item"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "prices", force: :cascade do |t|
@@ -107,6 +137,14 @@ ActiveRecord::Schema.define(version: 20170114141005) do
     t.string   "simplified_type",        default: "file"
   end
 
+  create_table "service_item_translations", force: :cascade do |t|
+    t.integer  "service_item_id"
+    t.integer  "language"
+    t.string   "service_name"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "service_items", force: :cascade do |t|
     t.string   "service_name"
     t.datetime "created_at",   null: false
@@ -114,6 +152,14 @@ ActiveRecord::Schema.define(version: 20170114141005) do
   end
 
   create_table "whies", force: :cascade do |t|
+    t.text     "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "why_translations", force: :cascade do |t|
+    t.integer  "why_id"
+    t.integer  "language"
     t.text     "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

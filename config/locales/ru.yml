@@ -19,11 +19,11 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
-  homepage: 'Home Page'
-  services: 'Our services'
-  why_us: 'Why us?'
-  prices: 'Prices'
-  contacts: 'Contacts'
+ru:
+  homepage: 'Домашняя Страница'
+  services: 'Наши Услуги'
+  why_us: 'Почему именно мы?'
+  prices: 'Цены'
+  contacts: 'Контакты'
 
 

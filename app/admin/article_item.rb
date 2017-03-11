@@ -12,6 +12,12 @@ ActiveAdmin.register ArticleItem do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+  index do
+    id_column
+    column :title
+    column :body
+    column :article_items_translations
+  end
 
   form do |f|
     f.inputs "Article" do

@@ -6,11 +6,15 @@
     </div>
     <div id="menu">
       <ul>
-        <li class="current_page_item"><a href="#welcome" accesskey="1" title="">Домашняя страница</a></li>
-        <li><a href="#services" accesskey="2" title="">Наши услуги</a></li>
-        <li><a href="#why" accesskey="4" title="">Почему именно мы?</a></li>
-        <li><a href="#price" accesskey="5" title="">Цены</a></li>
-        <li><a href="#contacts" accesskey="3" title="">Контакты</a></li>
+        <li class="current_page_item"><a href="#welcome" accesskey="1" title=""><%= t('homepage') %></a></li>
+        <li><a href="#services" accesskey="2" title=""><%= t('services') %></a></li>
+        <li><a href="#why" accesskey="4" title=""><%= t('why_us') %></a></li>
+        <li><a href="#price" accesskey="5" title=""><%= t('prices') %></a></li>
+        <li><a href="#contacts" accesskey="3" title=""><%= t('contacts') %></a></li>
+        <%= link_to "English", { :locale=>'en' } %>
+        <%= link_to "Russian", { :locale=>'ru' } %>
+        <%= link_to "Ukrainian", { :locale=>'ua' } %>
+
       </ul>
     </div>
   </div>
@@ -31,7 +35,7 @@
     </div>
     <div id="services">
       <div class="title" style='margin-bottom:initial'>
-        <h2>Наши услуги</h2>
+        <h2><%= t('services') %></h2>
         <span class="byline"></span>
       </div>
       <ul class="style1 services">
@@ -80,7 +84,7 @@
     <% end %>
     <div id="why">
       <div class="title" style='margin-bottom:initial'>
-        <h2>Почему именно мы?</h2>
+        <h2><%= t('why_us') %></h2>
         <span class="byline"></span>
       </div>
       <div class='text' style='text-align: -webkit-auto;'>
@@ -90,7 +94,7 @@
 
     <div id="price">
       <div class="title" style='margin-bottom:initial'>
-        <h2>Цены</h2>
+        <h2><%= t('prices') %></h2>
         <span class="byline"></span>
       </div>
       <div class='text' style='text-align: -webkit-auto;'>
@@ -111,7 +115,7 @@
 
     <div id='contacts' style='margin-top:10%'>
       <div class='title'>
-       <h2>Контакты</h2>
+       <h2><%= t('contacts') %></h2>
       </div>
 
       <div class='text'>
