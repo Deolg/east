@@ -116,27 +116,40 @@
 
       <div class='text'>
         <%= render 'request_form'%>
-        <div class="container" style='margin-top:10%'>
+        <div  style='margin-top:10%'>
             <div class="row text-center">
-              <div class="col-sm-3 col-xs-6 first-box">
+              <div class="col-sm-3 col-xs-3 first-box">
                   <h1><span class="glyphicon glyphicon-earphone"></span></h1>
                   <h3>Телефон</h3>
                   <p><a href="tel:<%=@contacts.try(:phone)%>"><%=@contacts.phone%></a></p><br>
               </div>
-              <div class="col-sm-3 col-xs-6 second-box">
+              <div class="col-sm-3 col-xs-3 second-box">
                   <h1><span class="glyphicon glyphicon-user"></span></h1>
                   <h3>Skype</h3>
                   <p><a href="skype:<%=@contacts.try(:skype)%>?chat"><%=@contacts.skype%></a></p><br>
               </div>
-              <div class="col-sm-3 col-xs-6 third-box">
+              <div class="col-sm-3 col-xs-3 third-box">
                   <h1><span class="glyphicon glyphicon-send"></span></h1>
                   <h3>E-mail</h3>
                   <p><%= mail_to @contacts.try(:mail) %></p><br>
               </div>
-              <div class="col-sm-3 col-xs-6 fourth-box">
+              <div class="col-sm-3 col-xs-3 fourth-box">
                 <h1><span class="glyphicon glyphicon-comment"></span></h1>
                   <h3>Viber</h3>
                   <p><%=@contacts.try(:viber)%></p><br>
+              </div>
+            </div>
+            <div class='row'>
+              <div class='social'>
+                <a class="btn btn-social-icon btn-lg btn-facebook" href='https://www.facebook.com/Erezidency/'>
+                  <span class="fa fa-facebook"></span>
+                </a>
+                <a class="btn btn-social-icon btn-lg btn-vk" href='https://vk.com/club140605432'>
+                  <span class="fa fa-vk"></span>
+                </a>
+                <a class="btn btn-social-icon btn-lg btn-odnoklassniki" href='https://ok.ru/group/54374910787837'>
+                  <span class="fa fa-odnoklassniki"></span>
+                </a>
               </div>
             </div>
           </div>

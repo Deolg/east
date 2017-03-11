@@ -17,6 +17,9 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "bootstrap-social";
 
 #page {
   width: 100%;
@@ -53,3 +56,16 @@ table.companies th {
 .third-box{padding:10px;background:#F66;}
 .fourth-box{padding:10px;background:#6CC;}
 
+.social {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.social .fa {
+  color: inherit;
+  background: inherit;
+}
+
+.btn-lg, .btn-group-lg > .btn{
+  font-size: inherit;
+}
