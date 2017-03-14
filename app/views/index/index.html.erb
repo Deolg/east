@@ -11,12 +11,19 @@
         <li><a href="#why" accesskey="4" title=""><%= t('why_us') %></a></li>
         <li><a href="#price" accesskey="5" title=""><%= t('prices') %></a></li>
         <li><a href="#contacts" accesskey="3" title=""><%= t('contacts') %></a></li>
-        <%= link_to "English", { :locale=>'en' } %>
-        <%= link_to "Russian", { :locale=>'ru' } %>
-        <%= link_to "Ukrainian", { :locale=>'ua' } %>
-
       </ul>
     </div>
+    <div class="dropdown show">
+  <a class="btn btn-secondary dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <%= locale %>
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <%= link_to "English", { :locale=>'en' }, class: "dropdown-item"%>
+    <%= link_to "Russian", { :locale=>'ru' }, class: "dropdown-item" %>
+    <%= link_to "Ukrainian", { :locale=>'ua', class: "dropdown-item"} %>
+  </div>
+</div>
   </div>
   <div id="main">
     <div id="banner">
@@ -110,7 +117,7 @@
           </div>
         <% end %>
       </div>
-      <p><strong>Все цены указаны без НДС</strong></p>
+      <p><strong><%= t('vat_prices') %></strong></p>
     </div>
 
     <div id='contacts' style='margin-top:10%'>
@@ -124,7 +131,7 @@
             <div class="row text-center">
               <div class="col-sm-3 col-xs-3 first-box">
                   <h1><span class="glyphicon glyphicon-earphone"></span></h1>
-                  <h3>Телефон</h3>
+                  <h3><%= t('phone') %></h3>
                   <p><a href="tel:<%=@contacts.try(:phone)%>"><%=@contacts.phone%></a></p><br>
               </div>
               <div class="col-sm-3 col-xs-3 second-box">

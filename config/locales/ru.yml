@@ -24,6 +24,15 @@ ru:
   services: 'Наши Услуги'
   why_us: 'Почему именно мы?'
   prices: 'Цены'
+  vat_prices: 'Все цены указаны без НДС'
   contacts: 'Контакты'
+  phone: 'Телефон'
+  what_name: 'Как к Вам можно обращаться?'
+  what_question: "Ваш вопрос?"
+  what_phone: "Как с Вами можно связаться?"
+  ask_question: "Задать вопрос"
+  time:
+    formats:
+      long: "%Y-%m-%d %H:%M:%S"
 
 

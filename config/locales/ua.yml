@@ -24,7 +24,16 @@ ua:
   services: 'Наші Послуги'
   why_us: 'Чому саме ми?'
   prices: 'Ціни'
+  vat_prices: 'Всі ціни вказані без ПДВ'
   contacts: 'Контакти'
+  phone: 'Телефон'
+  what_name: "Ваше ім'я?"
+  what_question: "Ваше питання?"
+  what_phone: "Як з Вами можно зв'язатися?"
+  ask_question: "Задати запитання"
+  time:
+    formats:
+      long: "%Y-%m-%d %H:%M:%S"
 
 
 

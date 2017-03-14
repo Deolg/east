@@ -24,6 +24,18 @@ en:
   services: 'Our services'
   why_us: 'Why us?'
   prices: 'Prices'
+  vat_prices: 'All prices are excluding VAT'
   contacts: 'Contacts'
+  phone: 'Phone'
+  what_name: 'What is your name?'
+  what_question: "What is your question?"
+  what_phone: "How we could respond you?"
+  ask_question: "Ask question"
+
+
+
+
+
+
 
 
