@@ -10,7 +10,7 @@ require 'capistrano/rails/migrations'
 require 'capistrano/rvm'
 # require 'capistrano/bundler'
 # require 'capistrano/rails/migrations'
-require 'capistrano/rails/assets'
+# require 'capistrano/rails/assets'
 require 'capistrano3/unicorn'
 
 # Include tasks from other gems included in your Gemfile
