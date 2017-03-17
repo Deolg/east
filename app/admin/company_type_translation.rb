@@ -14,7 +14,7 @@ ActiveAdmin.register CompanyTypeTranslation do
 # end
   form do |f|
     f.inputs "Company Type Translation" do
-      f.input :company_type_id, as: :select, collection: CompanyType.all.pluck(:form), include_blank: false
+      f.input :company_type_id, as: :select, collection: CompanyType.all.map{|c| [c.form, c.id]}, include_blank: false
       f.input :language, as: :select, include_blank: false
       f.input :form
       f.input :capital

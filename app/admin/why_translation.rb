@@ -3,11 +3,11 @@ ActiveAdmin.register WhyTranslation do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-  permit_params :why_id, :text
+  permit_params :why_id, :text, :language
 
   form do |f|
     f.inputs "Why We translations" do
-      f.input :why_id, as: :select, collection: Why.all.pluck(:id), include_blank: false
+      f.input :why_id, as: :select, collection: Why.all.map{|w| [w.id, w.id]}, include_blank: false
       f.input :language, as: :select, include_blank: false
       f.input :text
     end

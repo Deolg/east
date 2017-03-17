@@ -56,7 +56,7 @@ class IndexController < ApplicationController
 
   def why_we
     if locale != :ru
-      Why.last.why_translations.where(language: locale)
+      Why.last.why_translations.where(language: locale).first
     else
       Why.last
     end

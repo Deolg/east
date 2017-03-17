@@ -14,7 +14,7 @@ ActiveAdmin.register PriceTranslation do
 # end
   form do |f|
     f.inputs "Price Translation" do
-      f.input :price_id, as: :select, collection: Price.all.pluck(:item), include_blank: false
+      f.input :price_id, as: :select, collection: Price.all.map{|p| [p.item, p.id]}, include_blank: false
       f.input :language, as: :select, include_blank: false
       f.input :item
       f.input :description
