@@ -558,12 +558,12 @@
     color: rgba(0,0,0,0.9);
   }
 
-  .fa
+  /*.fa
   {
     display: block;
     color: #000;
     background: red;
-  }
+  }*/
 
 #welcome p {
   text-align: justify;
