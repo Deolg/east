@@ -31,6 +31,19 @@ en:
   what_question: "What is your question?"
   what_phone: "How we could respond you?"
   ask_question: "Ask question"
+  price_packs:
+    price_packs: 'Service Packs'
+    company: 'Company'
+    notary: 'Notary Officer'
+    legal_address: 'Legal Address (1 year)'
+    contact_person: 'Contact person in Estonia (1 year)'
+    account: 'Banking Account'
+    remote_open: 'Remote incorporation and opening of banking account'
+    vat: 'Request VAT number'
+    included_capital: 'Company with registered capital (minimum level: 2500 EUR)'
+    pack_price: 'Pack price (EUR)'
+
+
 
 
 

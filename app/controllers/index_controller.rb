@@ -8,6 +8,7 @@ class IndexController < ApplicationController
     @why_we = why_we
     @requisite = Requisite.last
     @contacts = Contact.last
+    @price_packs = PricePack.all
   end
 
   def create_request
