@@ -16,7 +16,8 @@ ActiveAdmin.register ArticleItem do
     id_column
     column :title
     column :body
-    column :article_items_translations
+    # column :article_items_translations
+    actions
   end
 
   form do |f|
