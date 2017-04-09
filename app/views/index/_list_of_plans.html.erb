@@ -27,7 +27,7 @@ tbody td:last-child { background: #fff; text-align: center; border: 1px solid #c
 
 </style>
 
-<%= if @price_packs %>
+<% if !@price_packs.blank? %>
   <h1><%= t('price_packs.price_packs') %></h1>
   <table>
     <colgroup></colgroup>
