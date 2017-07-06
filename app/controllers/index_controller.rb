@@ -8,7 +8,8 @@ class IndexController < ApplicationController
     @why_we = why_we
     @requisite = Requisite.last
     @contacts = Contact.last
-    @price_packs = PricePack.all
+    @price_packs = price_packs
+    @price_pack_items = price_pack_items
   end
 
   def create_request
@@ -29,6 +30,14 @@ class IndexController < ApplicationController
     else
       ArticleItem.all.order(:created_at)
     end
+  end
+
+  def price_packs
+    PricePack.includes([:price_pack_items]).order('order_index ASC').all
+  end
+
+  def price_pack_items
+    PricePackItem.all
   end
 
   def service_items

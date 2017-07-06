@@ -1,0 +1,1389 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: active_admin_comments; Type: TABLE; Schema: public; Owner: deploy; Tablespace: 
+--
+
+CREATE TABLE active_admin_comments (
+    id integer NOT NULL,
+    namespace character varying,
+    body text,
+    resource_id character varying NOT NULL,
+    resource_type character varying NOT NULL,
+    author_type character varying,
+    author_id integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE public.active_admin_comments OWNER TO deploy;
+
+--
+-- Name: active_admin_comments_id_seq; Type: SEQUENCE; Schema: public; Owner: deploy
+--
+
+CREATE SEQUENCE active_admin_comments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.active_admin_comments_id_seq OWNER TO deploy;
+
+--
+-- Name: active_admin_comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: deploy
+--
+
+ALTER SEQUENCE active_admin_comments_id_seq OWNED BY active_admin_comments.id;
+
+
+--
+-- Name: admin_users; Type: TABLE; Schema: public; Owner: deploy; Tablespace: 
+--
+
+CREATE TABLE admin_users (
+    id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    email character varying DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying,
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    sign_in_count integer DEFAULT 0 NOT NULL,
+    current_sign_in_at timestamp without time zone,
+    last_sign_in_at timestamp without time zone,
+    current_sign_in_ip inet,
+    last_sign_in_ip inet
+);
+
+
+ALTER TABLE public.admin_users OWNER TO deploy;
+
+--
+-- Name: admin_users_id_seq; Type: SEQUENCE; Schema: public; Owner: deploy
+--
+
+CREATE SEQUENCE admin_users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.admin_users_id_seq OWNER TO deploy;
+
+--
+-- Name: admin_users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: deploy
+--
+
+ALTER SEQUENCE admin_users_id_seq OWNED BY admin_users.id;
+
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: deploy; Tablespace: 
+--
+
+CREATE TABLE ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.ar_internal_metadata OWNER TO deploy;
+
+--
+-- Name: article_items; Type: TABLE; Schema: public; Owner: deploy; Tablespace: 
+--
+
+CREATE TABLE article_items (
+    id integer NOT NULL,
+    title character varying,
+    body text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.article_items OWNER TO deploy;
+
+--
+-- Name: article_items_id_seq; Type: SEQUENCE; Schema: public; Owner: deploy
+--
+
+CREATE SEQUENCE article_items_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.article_items_id_seq OWNER TO deploy;
+
+--
+-- Name: article_items_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: deploy
+--
+
+ALTER SEQUENCE article_items_id_seq OWNED BY article_items.id;
+
+
+--
+-- Name: article_items_translations; Type: TABLE; Schema: public; Owner: deploy; Tablespace: 
+--
+
+CREATE TABLE article_items_translations (
+    id integer NOT NULL,
+    article_item_id integer,
+    language integer,
+    title character varying,
+    body text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.article_items_translations OWNER TO deploy;
+
+--
+-- Name: article_items_translations_id_seq; Type: SEQUENCE; Schema: public; Owner: deploy
+--
+
+CREATE SEQUENCE article_items_translations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.article_items_translations_id_seq OWNER TO deploy;
+
+--
+-- Name: article_items_translations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: deploy
+--
+
+ALTER SEQUENCE article_items_translations_id_seq OWNED BY article_items_translations.id;
+
+
+--
+-- Name: company_type_translations; Type: TABLE; Schema: public; Owner: deploy; Tablespace: 
+--
+
+CREATE TABLE company_type_translations (
+    id integer NOT NULL,
+    company_type_id integer,
+    language integer,
+    form character varying,
+    capital text,
+    heads text,
+    responsibility text,
+    management text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.company_type_translations OWNER TO deploy;
+
+--
+-- Name: company_type_translations_id_seq; Type: SEQUENCE; Schema: public; Owner: deploy
+--
+
+CREATE SEQUENCE company_type_translations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.company_type_translations_id_seq OWNER TO deploy;
+
+--
+-- Name: company_type_translations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: deploy
+--
+
+ALTER SEQUENCE company_type_translations_id_seq OWNED BY company_type_translations.id;
+
+
+--
+-- Name: company_types; Type: TABLE; Schema: public; Owner: deploy; Tablespace: 
+--
+
+CREATE TABLE company_types (
+    id integer NOT NULL,
+    form character varying,
+    capital text,
+    heads text,
+    responsibility text,
+    management text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.company_types OWNER TO deploy;
+
+--
+-- Name: company_types_id_seq; Type: SEQUENCE; Schema: public; Owner: deploy
+--
+
+CREATE SEQUENCE company_types_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.company_types_id_seq OWNER TO deploy;
+
+--
+-- Name: company_types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: deploy
+--
+
+ALTER SEQUENCE company_types_id_seq OWNED BY company_types.id;
+
+
+--
+-- Name: contacts; Type: TABLE; Schema: public; Owner: deploy; Tablespace: 
+--
+
+CREATE TABLE contacts (
+    id integer NOT NULL,
+    phone character varying,
+    skype character varying,
+    mail character varying,
+    viber character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.contacts OWNER TO deploy;
+
+--
+-- Name: contacts_id_seq; Type: SEQUENCE; Schema: public; Owner: deploy
+--
+
+CREATE SEQUENCE contacts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.contacts_id_seq OWNER TO deploy;
+
+--
+-- Name: contacts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: deploy
+--
+
+ALTER SEQUENCE contacts_id_seq OWNED BY contacts.id;
+
+
+--
+-- Name: price_packs; Type: TABLE; Schema: public; Owner: deploy; Tablespace: 
+--
+
+CREATE TABLE price_packs (
+    id integer NOT NULL,
+    name character varying NOT NULL,
+    company boolean DEFAULT false,
+    notary boolean DEFAULT false,
+    jur_address boolean DEFAULT false,
+    contact_person boolean DEFAULT false,
+    account boolean DEFAULT false,
+    remote_open boolean DEFAULT false,
+    vat boolean DEFAULT false,
+    included_capital boolean DEFAULT false,
+    price double precision DEFAULT 0.0,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.price_packs OWNER TO deploy;
+
+--
+-- Name: price_packs_id_seq; Type: SEQUENCE; Schema: public; Owner: deploy
+--
+
+CREATE SEQUENCE price_packs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.price_packs_id_seq OWNER TO deploy;
+
+--
+-- Name: price_packs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: deploy
+--
+
+ALTER SEQUENCE price_packs_id_seq OWNED BY price_packs.id;
+
+
+--
+-- Name: price_translations; Type: TABLE; Schema: public; Owner: deploy; Tablespace: 
+--
+
+CREATE TABLE price_translations (
+    id integer NOT NULL,
+    price_id integer,
+    language integer,
+    item character varying,
+    description character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.price_translations OWNER TO deploy;
+
+--
+-- Name: price_translations_id_seq; Type: SEQUENCE; Schema: public; Owner: deploy
+--
+
+CREATE SEQUENCE price_translations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.price_translations_id_seq OWNER TO deploy;
+
+--
+-- Name: price_translations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: deploy
+--
+
+ALTER SEQUENCE price_translations_id_seq OWNED BY price_translations.id;
+
+
+--
+-- Name: prices; Type: TABLE; Schema: public; Owner: deploy; Tablespace: 
+--
+
+CREATE TABLE prices (
+    id integer NOT NULL,
+    item character varying,
+    description character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.prices OWNER TO deploy;
+
+--
+-- Name: prices_id_seq; Type: SEQUENCE; Schema: public; Owner: deploy
+--
+
+CREATE SEQUENCE prices_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.prices_id_seq OWNER TO deploy;
+
+--
+-- Name: prices_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: deploy
+--
+
+ALTER SEQUENCE prices_id_seq OWNED BY prices.id;
+
+
+--
+-- Name: requests; Type: TABLE; Schema: public; Owner: deploy; Tablespace: 
+--
+
+CREATE TABLE requests (
+    id integer NOT NULL,
+    "from" character varying,
+    body text,
+    status integer DEFAULT 0,
+    address text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.requests OWNER TO deploy;
+
+--
+-- Name: requests_id_seq; Type: SEQUENCE; Schema: public; Owner: deploy
+--
+
+CREATE SEQUENCE requests_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.requests_id_seq OWNER TO deploy;
+
+--
+-- Name: requests_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: deploy
+--
+
+ALTER SEQUENCE requests_id_seq OWNED BY requests.id;
+
+
+--
+-- Name: requisites; Type: TABLE; Schema: public; Owner: deploy; Tablespace: 
+--
+
+CREATE TABLE requisites (
+    id integer NOT NULL,
+    text text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.requisites OWNER TO deploy;
+
+--
+-- Name: requisites_id_seq; Type: SEQUENCE; Schema: public; Owner: deploy
+--
+
+CREATE SEQUENCE requisites_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.requisites_id_seq OWNER TO deploy;
+
+--
+-- Name: requisites_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: deploy
+--
+
+ALTER SEQUENCE requisites_id_seq OWNED BY requisites.id;
+
+
+--
+-- Name: rich_rich_files; Type: TABLE; Schema: public; Owner: deploy; Tablespace: 
+--
+
+CREATE TABLE rich_rich_files (
+    id integer NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    rich_file_file_name character varying,
+    rich_file_content_type character varying,
+    rich_file_file_size integer,
+    rich_file_updated_at timestamp without time zone,
+    owner_type character varying,
+    owner_id integer,
+    uri_cache text,
+    simplified_type character varying DEFAULT 'file'::character varying
+);
+
+
+ALTER TABLE public.rich_rich_files OWNER TO deploy;
+
+--
+-- Name: rich_rich_files_id_seq; Type: SEQUENCE; Schema: public; Owner: deploy
+--
+
+CREATE SEQUENCE rich_rich_files_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.rich_rich_files_id_seq OWNER TO deploy;
+
+--
+-- Name: rich_rich_files_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: deploy
+--
+
+ALTER SEQUENCE rich_rich_files_id_seq OWNED BY rich_rich_files.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: deploy; Tablespace: 
+--
+
+CREATE TABLE schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE public.schema_migrations OWNER TO deploy;
+
+--
+-- Name: service_item_translations; Type: TABLE; Schema: public; Owner: deploy; Tablespace: 
+--
+
+CREATE TABLE service_item_translations (
+    id integer NOT NULL,
+    service_item_id integer,
+    language integer,
+    service_name character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.service_item_translations OWNER TO deploy;
+
+--
+-- Name: service_item_translations_id_seq; Type: SEQUENCE; Schema: public; Owner: deploy
+--
+
+CREATE SEQUENCE service_item_translations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.service_item_translations_id_seq OWNER TO deploy;
+
+--
+-- Name: service_item_translations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: deploy
+--
+
+ALTER SEQUENCE service_item_translations_id_seq OWNED BY service_item_translations.id;
+
+
+--
+-- Name: service_items; Type: TABLE; Schema: public; Owner: deploy; Tablespace: 
+--
+
+CREATE TABLE service_items (
+    id integer NOT NULL,
+    service_name character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.service_items OWNER TO deploy;
+
+--
+-- Name: service_items_id_seq; Type: SEQUENCE; Schema: public; Owner: deploy
+--
+
+CREATE SEQUENCE service_items_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.service_items_id_seq OWNER TO deploy;
+
+--
+-- Name: service_items_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: deploy
+--
+
+ALTER SEQUENCE service_items_id_seq OWNED BY service_items.id;
+
+
+--
+-- Name: whies; Type: TABLE; Schema: public; Owner: deploy; Tablespace: 
+--
+
+CREATE TABLE whies (
+    id integer NOT NULL,
+    text text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.whies OWNER TO deploy;
+
+--
+-- Name: whies_id_seq; Type: SEQUENCE; Schema: public; Owner: deploy
+--
+
+CREATE SEQUENCE whies_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.whies_id_seq OWNER TO deploy;
+
+--
+-- Name: whies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: deploy
+--
+
+ALTER SEQUENCE whies_id_seq OWNED BY whies.id;
+
+
+--
+-- Name: why_translations; Type: TABLE; Schema: public; Owner: deploy; Tablespace: 
+--
+
+CREATE TABLE why_translations (
+    id integer NOT NULL,
+    why_id integer,
+    language integer,
+    text text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.why_translations OWNER TO deploy;
+
+--
+-- Name: why_translations_id_seq; Type: SEQUENCE; Schema: public; Owner: deploy
+--
+
+CREATE SEQUENCE why_translations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.why_translations_id_seq OWNER TO deploy;
+
+--
+-- Name: why_translations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: deploy
+--
+
+ALTER SEQUENCE why_translations_id_seq OWNED BY why_translations.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: deploy
+--
+
+ALTER TABLE ONLY active_admin_comments ALTER COLUMN id SET DEFAULT nextval('active_admin_comments_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: deploy
+--
+
+ALTER TABLE ONLY admin_users ALTER COLUMN id SET DEFAULT nextval('admin_users_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: deploy
+--
+
+ALTER TABLE ONLY article_items ALTER COLUMN id SET DEFAULT nextval('article_items_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: deploy
+--
+
+ALTER TABLE ONLY article_items_translations ALTER COLUMN id SET DEFAULT nextval('article_items_translations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: deploy
+--
+
+ALTER TABLE ONLY company_type_translations ALTER COLUMN id SET DEFAULT nextval('company_type_translations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: deploy
+--
+
+ALTER TABLE ONLY company_types ALTER COLUMN id SET DEFAULT nextval('company_types_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: deploy
+--
+
+ALTER TABLE ONLY contacts ALTER COLUMN id SET DEFAULT nextval('contacts_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: deploy
+--
+
+ALTER TABLE ONLY price_packs ALTER COLUMN id SET DEFAULT nextval('price_packs_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: deploy
+--
+
+ALTER TABLE ONLY price_translations ALTER COLUMN id SET DEFAULT nextval('price_translations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: deploy
+--
+
+ALTER TABLE ONLY prices ALTER COLUMN id SET DEFAULT nextval('prices_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: deploy
+--
+
+ALTER TABLE ONLY requests ALTER COLUMN id SET DEFAULT nextval('requests_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: deploy
+--
+
+ALTER TABLE ONLY requisites ALTER COLUMN id SET DEFAULT nextval('requisites_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: deploy
+--
+
+ALTER TABLE ONLY rich_rich_files ALTER COLUMN id SET DEFAULT nextval('rich_rich_files_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: deploy
+--
+
+ALTER TABLE ONLY service_item_translations ALTER COLUMN id SET DEFAULT nextval('service_item_translations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: deploy
+--
+
+ALTER TABLE ONLY service_items ALTER COLUMN id SET DEFAULT nextval('service_items_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: deploy
+--
+
+ALTER TABLE ONLY whies ALTER COLUMN id SET DEFAULT nextval('whies_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: deploy
+--
+
+ALTER TABLE ONLY why_translations ALTER COLUMN id SET DEFAULT nextval('why_translations_id_seq'::regclass);
+
+
+--
+-- Data for Name: active_admin_comments; Type: TABLE DATA; Schema: public; Owner: deploy
+--
+
+COPY active_admin_comments (id, namespace, body, resource_id, resource_type, author_type, author_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: active_admin_comments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: deploy
+--
+
+SELECT pg_catalog.setval('active_admin_comments_id_seq', 1, false);
+
+
+--
+-- Data for Name: admin_users; Type: TABLE DATA; Schema: public; Owner: deploy
+--
+
+COPY admin_users (id, created_at, updated_at, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip) FROM stdin;
+1	2017-01-03 18:37:39.276214	2017-07-04 08:37:36.500816	erezidency@gmail.com	$2a$11$IrL278x39wBaVxp0x0aYduLOn7qz/qNt0CDXd.3jTQn3IQ/p.hqB.	\N	\N	2017-06-13 15:45:32.12189	141	2017-07-04 08:37:36.49605	2017-07-04 08:09:31.533422	80.235.112.114	80.235.112.114
+\.
+
+
+--
+-- Name: admin_users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: deploy
+--
+
+SELECT pg_catalog.setval('admin_users_id_seq', 1, true);
+
+
+--
+-- Data for Name: ar_internal_metadata; Type: TABLE DATA; Schema: public; Owner: deploy
+--
+
+COPY ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
+environment	production	2017-01-03 18:37:38.929086	2017-01-03 18:37:38.929086
+\.
+
+
+--
+-- Data for Name: article_items; Type: TABLE DATA; Schema: public; Owner: deploy
+--
+
+COPY article_items (id, title, body, created_at, updated_at) FROM stdin;
+2	Особенности ведения бизнеса в Эстонии:	<h4 style="text-align:justify"><strong><span style="font-size:16px">1. Налоги в Эстонии:</span></strong></h4>\r\n\r\n<h4 style="text-align:justify">&nbsp; &nbsp; 1.1 Если Ваша компания не ведет деятельность на территории Эстонии (а именно: нет наемных сотрудников, нет покупки/продажи на территории Эстонии), то налог на нераспределенную прибыль равен 0%, налоги на заработную плату также отсутствуют.</h4>\r\n\r\n<h4 style="text-align:justify">&nbsp; &nbsp; 1.2 Если все же Вы планируете свою деятельность связать с Эстонией, то обязательными к оплате будут следующие налоги:&nbsp;</h4>\r\n\r\n<h4 style="text-align:justify">- налог с оборота (VAT или НДС) :стандартной ставкой налога с оборота в Эстонии является 20% от облагаемой налогом стоимости товара или услуги; также используются налоговые ставки в 9% и 0%. Если Вы не покупаете и не продаете на территории Эстонии, то Вы не должны оплачивать НДС в Эстонии.&nbsp;Не должны оплачивать НДС также те компании, которые в год не привысили оборот от покупки-продажи с компаниями - резидентами Эстонии в размере 16 000,00 &nbsp;Евро.</h4>\r\n\r\n<h4 style="text-align:justify">&nbsp;- подоходный налог (взымается с заработной платы и в случае выплаты дивидендов) составляет 20%:</h4>\r\n\r\n<h4 style="text-align:justify">&nbsp;- социальный налог (данный налог взимается с целью получения дохода, необходимого для обеспечения пенсионного и государственного медицинского страхования. Социальным налогом облагаются выплаты в рамках трудовых и служебных отношений; выплаты членам органов управления и контроля юридических лиц; выплаты физическим лицам, произведенные на основании обязательственных договоров, заключенных с целью оказания услуг, а также специальные льготы и подоходный налог, подлежащий взиманию со специальных льгот. В вышеупомянутых случаях плательщиком социального налога является лицо, совершающее выплату, а период налогообложения равен одному календарному месяцу. Как правило, ставка социального налога составляет 33% от реально выплаченного вознаграждения, т.е. в случае работников или служащих - как минимум с месячной ставки, установленной государственным бюджетом);</h4>\r\n\r\n<h4 style="text-align:justify">&nbsp;- акцизы: в&nbsp;Эстонии акцизами облагается топливо, табачные изделия, алкоголь, моторные транспортные средства, а также упаковки от алкогольных и прохладительных напитков.</h4>\r\n\r\n<h4 style="text-align:justify">&nbsp;- земельный налог (это государственный налог, который в полном размере поступает в бюджет местного самоуправления по месту расположения земли. Сумма земельного налога рассчитывается путем умножения цены налогообложения земли на ставку земельного налога.&nbsp; Земельным налогом облагается вся земля. Земельный налог платит собственник земли, а в некоторых случаях также пользователь земли);</h4>\r\n\r\n<h4 style="text-align:justify"><strong><span style="font-size:16px">2. Удобная банковская инфраструктура, интернет-банкинг, возможность открытия счета по доверенности</span></strong></h4>\r\n\r\n<h4 style="text-align:justify"><strong><span style="font-size:16px">3. Возможность оформления долгосрочной бизнес-визы</span></strong></h4>\r\n\r\n<h4 style="text-align:justify">Учредители и члены правления компании в Эстонии могут ходатайствовать о получении долгосрочной бизнес-визы или ВНЖ. Первый ВНЖ предоставляется сроком на два года, далее продлевается до&nbsp;пяти&nbsp;лет.</h4>\r\n\r\n<h4 style="text-align:justify"><strong><span style="font-size:16px">4. Дистанционное открытие или приобретение компаний</span></strong></h4>\r\n\r\n<h4 style="text-align:justify"><strong><span style="font-size:16px">5. Собственниками и членами правления компаний могут быть нерезиденты Эстонии</span></strong></h4>\r\n	2017-01-03 18:37:39.295271	2017-04-19 17:38:36.859621
+1	Электронное гражданство Эстонии как первый шаг к развитию Вашего бизнеса в Европе	<h4 dir="ltr" style="text-align:justify">Эснония - маленькая Европейская страна, но ее правительство заботится о благополучии и развитии своих граждан. В Эстонии кажды год из бюджета выделяются денежные средства на развитие информационных технологий, которые не только делают жизнь граждан проще, но и приносят значительный вклад в бюджет страны. Одним из выдающихся достижений эстонских программистов стала разработка Skype, которым успешно пользуются во всем мире.</h4>\r\n\r\n<h4 dir="ltr" style="text-align:justify">Сейчас к услугам жителей Эстонии широкий спектр электронных услуг, которыми они пользуются в своей повседневной жизни. В настоящее время Эстонское государство предлагает 600 электронных услуг гражданам и 2400 услуг бизнесу.</h4>\r\n\r\n<h4 dir="ltr" style="text-align:justify">Эстония - самая первая страна в мире, которая запустила программу электронного резиденства. С помощью этой программы жители других стран могут открыть фирму в Эстонии и управлять ею по Интернету из любой точки Земного шара.</h4>\r\n\r\n<p dir="ltr">&nbsp;</p>\r\n\r\n<h2 dir="ltr">Что дает статус э-резидента?</h2>\r\n\r\n<p dir="ltr">&nbsp;</p>\r\n\r\n<ol dir="ltr">\r\n\t<li style="text-align:justify">\r\n\t<h4>Открытие компании в Эстонии, не посещая при этом страну через <a href="https://ettevotjaportaal.rik.ee/">портал предпринимателя</a> .</h4>\r\n\t</li>\r\n\t<li style="text-align:justify">\r\n\t<h4>Пользование <a href="http://www.emta.ee/index.php?id=29783">порталом Налогово-таможенного департамента</a> для подачи налоговых деклараций и общения с налоговой службой</h4>\r\n\t</li>\r\n\t<li style="text-align:justify">\r\n\t<h4>Возможность существования компании с наличием в ее структуре только нерезидентов, которые получили статус э-резидента</h4>\r\n\t</li>\r\n\t<li style="text-align:justify">\r\n\t<h4>Возможность пользования услуг государственного портала eesti.ee, а именно:&nbsp;</h4>\r\n\t</li>\r\n</ol>\r\n\r\n<ul style="margin-left:40px">\r\n\t<li dir="ltr">\r\n\t<p dir="ltr">&nbsp;включить <a href="https://www.eesti.ee/portaal/!postisysteem.suunamised">переадресацию своего адреса @eesti.ee</a> на обычный адрес э-почты, чтобы получать сообщения от государственных учреждений;</p>\r\n\t</li>\r\n\t<li dir="ltr">\r\n\t<p dir="ltr">&nbsp;загружать документы, подписывать документы цифровой подписью и пересылать их другим лицам при помощи услуги <a href="https://www.eesti.ee/rus/moi/dokumenty/documents.html">Мои документы</a>;</p>\r\n\t</li>\r\n\t<li dir="ltr">\r\n\t<p dir="ltr">&nbsp;пользоваться другими электронными услугами, которые станут актуальны по мере развития коммерческой и личной деятельности в Эстонии.</p>\r\n\t</li>\r\n</ul>\r\n\r\n<h2 dir="ltr">Как же получить статус электронного резидента Эстонии?</h2>\r\n\r\n<h4 dir="ltr" style="text-align:justify">Вы можете подать ходатайство о получении статуса э-резидента:</h4>\r\n\r\n<ul>\r\n\t<li dir="ltr">\r\n\t<h4 dir="ltr" style="text-align:justify"><a href="https://apply.gov.ee">на сайте программы эстонского электронного резидентства</a><a href="https://apply.gov.ee">;</a></h4>\r\n\t</li>\r\n\t<li dir="ltr">\r\n\t<h4 dir="ltr" style="text-align:justify">на территории Эстонии &mdash; в <a href="https://www.politsei.ee/ru/teenused/isikut-toendavad-dokumendid/e-residendi-digi-id/oluline-info-digi-id-taotlejale.dot#teenindus">бюро обслуживания</a> Департамента полиции и погранохраны;</h4>\r\n\t</li>\r\n\t<li dir="ltr">\r\n\t<h4 dir="ltr" style="text-align:justify">за пределами Эстонии &mdash; в посольствах и консульствах Эстонской Республики.</h4>\r\n\t</li>\r\n</ul>\r\n	2017-01-03 18:37:39.290969	2017-06-29 11:17:47.144712
+\.
+
+
+--
+-- Name: article_items_id_seq; Type: SEQUENCE SET; Schema: public; Owner: deploy
+--
+
+SELECT pg_catalog.setval('article_items_id_seq', 2, true);
+
+
+--
+-- Data for Name: article_items_translations; Type: TABLE DATA; Schema: public; Owner: deploy
+--
+
+COPY article_items_translations (id, article_item_id, language, title, body, created_at, updated_at) FROM stdin;
+4	2	1	Особливості ведення бізнесу в Естонії:	<p dir="ltr"><strong>1. Податки в Естонії:</strong></p>\r\n\r\n<p dir="ltr"><strong>&nbsp; &nbsp; 1.1 Якщо Ваша компанія не веде діяльність на території Естонії (а саме: ні найманих працівників, ні покупки/продажу на території Естонії), то податок на нерозподілений прибуток дорівнює 0%, податки на заробітну плату також відсутні.</strong></p>\r\n\r\n<p dir="ltr"><strong>&nbsp; &nbsp; 1.2 Якщо все ж Ви плануєте свою діяльність пов&#39;язати з Естонією, то обов&#39;язковими до оплати будуть наступні податки:&nbsp;</strong></p>\r\n\r\n<p dir="ltr"><strong>- податок з обороту (VAT або ПДВ): стандартною ставкою податку з обороту в Естонії є 20% від оподатковуваної вартості товару або послуги; також використовуються податкові ставки 9% і 0%. Якщо Ви не купуєте і не продаєте на території Естонії, то Ви не повинні сплачувати ПДВ &nbsp;і не повинні Естонії . Не повинні сплачувати ПДВ також ті компанії, які в рік не перевищили оберти від купівлі-продажу з компаніями-резидентами Естонії в розмірі 16 000,00 Євро.</strong></p>\r\n\r\n<p dir="ltr"><strong>- прибутковий податок (стягується з заробітної плати та у разі виплати дивідендів) становить 20%:</strong></p>\r\n\r\n<p dir="ltr"><strong>- соціальний податок (даний податок стягується з метою отримання доходу, необхідного для забезпечення державного пенсійного та медичного страхування. Соціальним податком обкладаються виплати в рамках трудових і службових відносин; виплати членам органів управління та контролю юридичних осіб; виплати фізичним особам, вироблені на підставі зобов&#39;язальних договорів, укладених з метою надання послуг, а також спеціальні пільги і прибутковий податок, що підлягає стягненню зі спеціальних пільг. У вищезазначених випадках платником соціального податку є особа, що здійснює виплату, а період оподаткування дорівнює одному календарному місяцю. Як правило, ставка соціального податку становить 33% від реально виплаченої винагороди, тобто в разі працівників чи службовців - як мінімум з місячної ставки, встановленої державним бюджетом);</strong></p>\r\n\r\n<p dir="ltr"><strong>- акцизи: в Естонії акцизами обкладається пальне, тютюнові вироби, алкоголь, моторні транспортні засоби, а також упаковки від алкогольних і прохолодних напоїв.</strong></p>\r\n\r\n<p dir="ltr"><strong>- земельний податок (це державний податок, який у повному обсязі надходить до бюджету місцевого самоврядування за місцем розташування землі. Сума земельного податку розраховується шляхом множення ціни оподаткування землі на ставку земельного податку. Земельним податком обкладається вся земля. Земельний податок сплачує власник землі, а в деяких випадках також користувач землі);</strong></p>\r\n\r\n<p dir="ltr"><strong>2. Зручна банківська інфраструктура, інтернет-банкінг, можливість відкриття рахунку за дорученням</strong></p>\r\n\r\n<p dir="ltr"><strong>3. Можливість оформлення довгострокової бізнес-візи</strong></p>\r\n\r\n<p dir="ltr"><strong>Засновники та члени правління компанії в Естонії можуть клопотати про отримання довгострокової бізнес-візи або ВНП. Перший ВНП надається строком на два роки, далі продовжується до п&#39;яти років.</strong></p>\r\n\r\n<p dir="ltr"><strong>4. Дистанційне відкриття або придбання компаній</strong></p>\r\n\r\n<p dir="ltr"><strong>5. Власниками та членами правління компаній можуть бути нерезиденти Естонії</strong></p>\r\n	2017-03-21 18:10:02.992834	2017-04-19 17:39:35.567992
+2	2	0	Peculiarities of Business Dealing in Estonia:	<p dir="ltr"><strong>1. Taxes in Estonia:</strong></p>\r\n\r\n<p dir="ltr"><strong>&nbsp; &nbsp; 1.1 If your Company does not carry on business within the territory of Estonia (namely: there are no wage-workers, sale/purchase within the territory of Estonia), then accumulated-earnings tax equal to 0%, there are also no salary taxes.</strong></p>\r\n\r\n<p dir="ltr"><strong>&nbsp; &nbsp; 1.2 If any way you are going to connect your business with Estonia, then the following taxes will be obligatory:&nbsp;</strong></p>\r\n\r\n<p dir="ltr"><strong>- turnover tax (VAT): ordinary rate of the turnover tax in Estonia makes 20% from taxable value of commodity or service; also 9% and 0% tax rates are used. If you do not sell or buy within the territory of Estonia, then you shall not pay VAT in Estonia. Companies, which do not exceed purchase and sale rate with resident companies of Estonia in the amount of 16.000,00 Euro shall not pay VAT.</strong></p>\r\n\r\n<p dir="ltr"><strong>&nbsp;- income tax (it is incurred from the salary and in case of dividend payment) makes 20%:</strong></p>\r\n\r\n<p dir="ltr"><strong>&nbsp;- social tax (this tax is incurred with the purpose of revenue generation, required for pensionary and national health insurance. Payments within the framework of labor and work relations, payments to members of legal entities management and supervision organs, payments to natural entities, made by virtue of executory agreements, entered into with the purpose of services rendering and also special privileges and income tax, subject to charges from specific privileges, are imposed by special privileges. In above-mentioned cases, the social tax payer is a person, making a payment, and taxable period equals to one calendar month. As a rule, social tax rate makes 33% from really paid remuneration, i.e. in the case if there are laborers or public servants &ndash; at least from monthly rate, determined by the government budget);</strong></p>\r\n\r\n<p dir="ltr"><strong>&nbsp;- Excise duties: fuel, tobacco products, alcohol, motor vehicle and also packing from alcoholic beverages and cool drinks are imposed by excise duties in Estonia.</strong></p>\r\n\r\n<p dir="ltr"><strong>&nbsp;- Land Tax (it is a state tax, that is going into the budget of the local government to the full extent at the place of land location. The sum of land tax is calculated by multiplication of assessed taxation land price by land tax rate. The whole land is liable to land tax. The land tax is paid by the land owner and in certain cases also by land user);</strong></p>\r\n\r\n<p dir="ltr"><strong>2. Convenient tax infrastructure, Internet-banking, possibility of account opening by the power of attorney</strong></p>\r\n\r\n<p dir="ltr"><strong>3. Possibility of long-term business visa processing</strong></p>\r\n\r\n<p dir="ltr"><strong>Company Promoters and Members of the Board in Estonia can apply for long-term business visa processing or residence permit. The first residence permit is given for the term of two years and then it is extended for the term of five years.</strong></p>\r\n\r\n<p dir="ltr"><strong>4. Distance Company Launching or Acquisition </strong></p>\r\n\r\n<p dir="ltr"><strong>5. Non-residents of Estonia can be owners or Members of the Executive Board</strong></p>\r\n	2017-03-20 13:40:23.856996	2017-04-19 17:41:17.124049
+3	1	1	Електронне громадянство Естонії як перший крок до розвитку Вашого бізнесу в Європі	<p dir="ltr"><strong>Естонія - маленька Європейська країна, але її уряд дбає про добробут і розвиток своїх громадян. В Естонії кожен рік з бюджету виділяються кошти на розвиток інформаційних технологій, які не тільки роблять життя громадян простіше, але і приносять значний внесок в бюджет країни. Одним з видатних досягнень естонських програмістів стала розробка Skype, якою успішно користуються у всьому світі.</strong></p>\r\n\r\n<p dir="ltr"><strong>Зараз до послуг жителів Естонії широкий спектр електронних послуг, якими вони користуються в своєму повсякденному житті. В даний час Естонська держава пропонує 600 електронних послуг громадянам і 2400 послуг бізнесу.</strong></p>\r\n\r\n<p><strong>Естонія - перша країна в світі, яка запустила програму електронного резидентства. За допомогою цієї програми жителі інших країн можуть відкрити фірму в Естонії і керувати нею по Інтернету з будь-якої точки Земної кулі.</strong><br />\r\n&nbsp;</p>\r\n\r\n<p dir="ltr"><strong>Що дає статус е-резидента?</strong></p>\r\n\r\n<p dir="ltr"><strong>&nbsp;</strong></p>\r\n\r\n<ol>\r\n\t<li dir="ltr">\r\n\t<p dir="ltr"><strong>Відкриття компанії в Естонії, не відвідуючи при цьому країну через <a href="https://ettevotjaportaal.rik.ee/index.py?chlang=eng">портал підприємця</a>&nbsp;.</strong></p>\r\n\t</li>\r\n\t<li dir="ltr">\r\n\t<p dir="ltr"><strong>Користування &nbsp;порталом <a href="http://www.emta.ee/ru">Податково-митного департаменту</a>&nbsp;для подання податкових декларацій та спілкування з податковою службою</strong></p>\r\n\t</li>\r\n\t<li dir="ltr">\r\n\t<p dir="ltr"><strong>Можливість існування компанії з наявністю в її структурі лише нерезидентів, які отримали статус е-резидента</strong></p>\r\n\t</li>\r\n\t<li dir="ltr">\r\n\t<p dir="ltr"><strong>Можливість користування послугами державного порталу eesti.ee, а саме:&nbsp;</strong></p>\r\n\t</li>\r\n</ol>\r\n\r\n<ul>\r\n\t<li dir="ltr">\r\n\t<p dir="ltr"><strong>&nbsp;включити &nbsp;<a href="https://www.eesti.ee/portaal/!postisysteem.suunamised">переадресацію своєї адреси @eesti.ee</a>&nbsp;на звичайну адресу е-пошти, щоб отримувати повідомлення від державних установ;</strong></p>\r\n\t</li>\r\n\t<li dir="ltr">\r\n\t<p dir="ltr"><strong>&nbsp;завантажувати документи, підписувати документи цифровим підписом і пересилати їх іншим особам за допомогою послуги <a href="https://www.eesti.ee/rus/moi/dokumenty/documents.html">Мої документи</a>;</strong></p>\r\n\t</li>\r\n\t<li dir="ltr">\r\n\t<p dir="ltr"><strong>&nbsp;користуватися іншими електронними послугами, які стануть актуальними з розвитком комерційної і особистої діяльності в Естонії.</strong></p>\r\n\t</li>\r\n</ul>\r\n\r\n<p dir="ltr"><strong>Як же отримати статус електронного резидента Естонії?</strong></p>\r\n\r\n<p dir="ltr"><strong>Ви можете подати клопотання про отримання статусу е-резидента:</strong></p>\r\n\r\n<ul>\r\n\t<li dir="ltr">\r\n\t<p dir="ltr"><strong><a href="https://apply.gov.ee">на сайті програми естонського електронного резидентства</a>;</strong></p>\r\n\t</li>\r\n\t<li dir="ltr">\r\n\t<p dir="ltr"><strong>на території Естонії &mdash; в&nbsp;<a href="https://www.politsei.ee/ru/teenused/isikut-toendavad-dokumendid/e-residendi-digi-id/oluline-info-digi-id-taotlejale.dot#teenindus">бюро обслуговування</a>&nbsp;Департаменту поліції та прикордонної охорони;</strong></p>\r\n\t</li>\r\n\t<li dir="ltr">\r\n\t<p dir="ltr"><strong>за межами Естонії &mdash; в посольствах і консульствах Естонської Республіки.</strong></p>\r\n\t</li>\r\n</ul>\r\n	2017-03-21 18:08:54.309131	2017-06-29 11:24:48.839121
+1	1	0	Estonian Electronic Citizenship as the first step to your business development in Europe	<p dir="ltr"><strong>Estonia is a small European country, but its government is concerned about citizens&rsquo; well-being and development. From year to year monetary assets for informational technologies development are appropriated from the budget in Estonia; this fact not only makes citizens&rsquo; life easier, but brings substantial contribution to the budget of the country. Skype development is one of outstanding achievements of Estonian programmers; it is successfully used all over the world.</strong></p>\r\n\r\n<p dir="ltr"><strong>There is a wide range of e-services, employed by the Estonians in their daily life now. Currently Estonian government offers 600 E-services for citizens and 2400 E-services for business.</strong></p>\r\n\r\n<p dir="ltr"><strong>Estonia is the first country in the world that launched the Electronic Residency Program. With the help of this program citizens of other countries can open their own business in Estonia and run it over the Internet from any spot of the Earth.</strong><br />\r\n&nbsp;</p>\r\n\r\n<p dir="ltr"><strong>What does e-residency status give?</strong></p>\r\n\r\n<p dir="ltr"><strong>&nbsp;</strong></p>\r\n\r\n<ol>\r\n\t<li dir="ltr">\r\n\t<p dir="ltr"><strong>Setting up a company in Estonia, without visiting the country via&nbsp;<a href="https://ettevotjaportaal.rik.ee/">entrepreneur portal</a>&nbsp;.</strong></p>\r\n\t</li>\r\n\t<li dir="ltr">\r\n\t<p dir="ltr"><strong>Usage of &nbsp;<a href="http://www.emta.ee/index.php?id=29783">Tax</a> and Customs Board Department&nbsp; for filling of tax returns and communication with the Revenue.</strong></p>\r\n\t</li>\r\n\t<li dir="ltr">\r\n\t<p dir="ltr"><strong>Possibility of Company Existence, having just non-residents, received electronic residency status.</strong></p>\r\n\t</li>\r\n\t<li dir="ltr">\r\n\t<p dir="ltr"><strong>Possibility to use state portal services eesti.ee, namely:&nbsp;</strong></p>\r\n\t</li>\r\n</ol>\r\n\r\n<ul>\r\n\t<li dir="ltr">\r\n\t<p dir="ltr"><strong>&nbsp;to&nbsp;<a href="https://www.eesti.ee/portaal/!postisysteem.suunamised">readdress you email account @eesti.ee</a>&nbsp;to the usual e-mail account in order to receive messages from government facilities;</strong></p>\r\n\t</li>\r\n\t<li dir="ltr">\r\n\t<p dir="ltr"><strong>&nbsp;to load documents, to subscribe them via digital signature and send them to others, using service <a href="https://www.eesti.ee/rus/moi/dokumenty/documents.html">My</a> documents;</strong></p>\r\n\t</li>\r\n\t<li dir="ltr">\r\n\t<p dir="ltr"><strong>&nbsp;to use other E-services, emerging full blown due to business and personal activities development in Estonia.</strong><br />\r\n\t&nbsp;</p>\r\n\r\n\t<p dir="ltr"><strong>How to receive e-residency status in Estonia?</strong></p>\r\n\r\n\t<p dir="ltr"><strong>You can apply for reception of e-residency status:</strong></p>\r\n\t</li>\r\n\t<li dir="ltr">\r\n\t<p dir="ltr"><strong><a href="https://apply.gov.ee">on the web-site of Estonian e-residency status</a>;</strong></p>\r\n\t</li>\r\n\t<li dir="ltr">\r\n\t<p dir="ltr"><strong>within the territory of Estonia &mdash; in&nbsp;<a href="https://www.politsei.ee/ru/teenused/isikut-toendavad-dokumendid/e-residendi-digi-id/oluline-info-digi-id-taotlejale.dot#teenindus">Service</a> Bureau&nbsp;of Police and Border Guard Board;</strong></p>\r\n\t</li>\r\n\t<li dir="ltr">\r\n\t<p dir="ltr"><strong>outside the territory of Estonia &mdash; in Embassies and Consular Agencies of the Republic of Estonia.</strong></p>\r\n\t</li>\r\n</ul>\r\n	2017-03-20 13:38:42.004601	2017-06-29 11:19:57.463407
+\.
+
+
+--
+-- Name: article_items_translations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: deploy
+--
+
+SELECT pg_catalog.setval('article_items_translations_id_seq', 4, true);
+
+
+--
+-- Data for Name: company_type_translations; Type: TABLE DATA; Schema: public; Owner: deploy
+--
+
+COPY company_type_translations (id, company_type_id, language, form, capital, heads, responsibility, management, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: company_type_translations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: deploy
+--
+
+SELECT pg_catalog.setval('company_type_translations_id_seq', 1, false);
+
+
+--
+-- Data for Name: company_types; Type: TABLE DATA; Schema: public; Owner: deploy
+--
+
+COPY company_types (id, form, capital, heads, responsibility, management, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: company_types_id_seq; Type: SEQUENCE SET; Schema: public; Owner: deploy
+--
+
+SELECT pg_catalog.setval('company_types_id_seq', 6, true);
+
+
+--
+-- Data for Name: contacts; Type: TABLE DATA; Schema: public; Owner: deploy
+--
+
+COPY contacts (id, phone, skype, mail, viber, created_at, updated_at) FROM stdin;
+1	+37253737222	valeriya_tujaskova	erezidency@gmail.com	+3725250757	2017-01-14 15:01:31.351578	2017-05-31 17:27:44.352859
+\.
+
+
+--
+-- Name: contacts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: deploy
+--
+
+SELECT pg_catalog.setval('contacts_id_seq', 1, true);
+
+
+--
+-- Data for Name: price_packs; Type: TABLE DATA; Schema: public; Owner: deploy
+--
+
+COPY price_packs (id, name, company, notary, jur_address, contact_person, account, remote_open, vat, included_capital, price, created_at, updated_at) FROM stdin;
+1	Standart	t	t	t	t	f	f	f	f	590	2017-04-09 14:04:43.918866	2017-06-15 11:22:17.077037
+2	Gold	t	t	t	t	t	f	f	f	750	2017-04-09 14:05:23.004676	2017-06-15 11:22:37.121666
+3	VIP	t	t	t	t	t	t	f	f	1150	2017-04-09 14:05:55.924103	2017-06-15 11:23:33.428884
+4	Premium	t	t	t	t	t	t	t	t	1750	2017-04-09 14:06:20.91715	2017-06-15 11:24:46.01385
+\.
+
+
+--
+-- Name: price_packs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: deploy
+--
+
+SELECT pg_catalog.setval('price_packs_id_seq', 4, true);
+
+
+--
+-- Data for Name: price_translations; Type: TABLE DATA; Schema: public; Owner: deploy
+--
+
+COPY price_translations (id, price_id, language, item, description, created_at, updated_at) FROM stdin;
+3	4	0	Accounting services	starting from 25 € per month, depending on turnover and quantity of transactions, annual report makes - starting from 100 €	2017-03-20 13:43:09.561831	2017-04-10 12:54:34.359599
+9	5	1	Подання заяви на отримання VAT номеру	100 Євро	2017-06-30 14:12:46.668599	2017-06-30 14:12:46.668599
+10	6	1	Отримання В-карти з регістру	50 Євро	2017-06-30 14:13:23.058533	2017-06-30 14:13:23.058533
+11	7	1	Апостиль документів	60 Євро сторінка	2017-06-30 14:14:01.20202	2017-06-30 14:14:01.20202
+12	8	1	Експрес доставка документів	100 Євро	2017-06-30 14:14:28.631933	2017-06-30 14:14:28.631933
+13	9	1	Естонська фірма OÜ (ТОВ)	250 Євро	2017-06-30 14:15:17.422191	2017-06-30 14:16:00.981273
+2	2	0	Receiving of the legal address 	150 € per year	2017-03-20 13:42:37.990641	2017-04-09 18:30:20.416877
+4	1	0	Legal advices	starting from 25 € per hour (agreed price, depends on item difficulty)	2017-03-20 13:43:33.83678	2017-04-09 18:38:46.339057
+6	2	1	Отримання юридичної адреси 	150 Євро на рік	2017-03-21 18:11:17.838776	2017-04-09 18:46:51.336317
+8	1	1	Юридичні консультації 	від 25 Євро/год (ціна договірна, залежить від складності питання)	2017-03-21 18:28:42.832528	2017-04-09 18:51:02.363995
+1	3	0	Contact person in Estonia	150€ per year	2017-03-20 13:42:11.71211	2017-04-10 04:23:21.271252
+5	3	1	Kонтактної особи в Естонії	150 Євро на рік	2017-03-21 18:10:41.688161	2017-04-10 04:28:42.164342
+7	4	1	Бухгалтерські послуги	від 25 Євро на місяць залежно від обороту і кількості операцій, річний звіт - від 100 Євро	2017-03-21 18:12:10.522739	2017-04-10 12:54:12.860334
+\.
+
+
+--
+-- Name: price_translations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: deploy
+--
+
+SELECT pg_catalog.setval('price_translations_id_seq', 13, true);
+
+
+--
+-- Data for Name: prices; Type: TABLE DATA; Schema: public; Owner: deploy
+--
+
+COPY prices (id, item, description, created_at, updated_at) FROM stdin;
+4	Юридические консультации	от 25 Евро/час (цена договорная, зависит от сложности вопроса)	2017-01-03 18:37:39.360377	2017-02-03 17:41:28.692466
+1	 Kонтактное лицо в Эстонии	150 Евро в год	2017-01-03 18:37:39.349209	2017-04-09 18:31:20.204022
+2	Получение юридического адреса 	150 Евро в год	2017-01-03 18:37:39.353404	2017-04-10 04:20:27.799091
+3	Бухгалтерские услуги	от 25 Евро в месяц в зависимости от оборота и количества операций, годовой отчет - от 100 Евро	2017-01-03 18:37:39.357135	2017-04-10 12:53:50.737371
+5	Подача заявки на получение VAT номера	100 Евро	2017-06-30 13:58:20.526144	2017-06-30 13:58:20.526144
+6	Получение В карты из регистра	50 Евро	2017-06-30 13:58:54.490405	2017-06-30 13:58:54.490405
+7	Апостиль документов	60 Евро лист	2017-06-30 13:59:17.425321	2017-06-30 13:59:17.425321
+8	Экспресс доставка документов	100 Евро	2017-06-30 13:59:58.520887	2017-06-30 13:59:58.520887
+9	Эстонская фирма OÜ (ООО)	250 Евро	2017-06-30 14:07:34.760007	2017-06-30 14:07:34.760007
+\.
+
+
+--
+-- Name: prices_id_seq; Type: SEQUENCE SET; Schema: public; Owner: deploy
+--
+
+SELECT pg_catalog.setval('prices_id_seq', 9, true);
+
+
+--
+-- Data for Name: requests; Type: TABLE DATA; Schema: public; Owner: deploy
+--
+
+COPY requests (id, "from", body, status, address, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: requests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: deploy
+--
+
+SELECT pg_catalog.setval('requests_id_seq', 27, true);
+
+
+--
+-- Data for Name: requisites; Type: TABLE DATA; Schema: public; Owner: deploy
+--
+
+COPY requisites (id, text, created_at, updated_at) FROM stdin;
+1	<h2 style="font-style:italic"><span style="font-size:14px"><span style="font-family:Georgia,serif"><cite>CITY VARA O&Uuml;</cite></span></span><br />\r\n<span style="font-size:12px">Haapsalu, Metsa 53, 90505</span></h2>\r\n	2017-01-14 15:00:39.977138	2017-03-20 17:25:46.052958
+\.
+
+
+--
+-- Name: requisites_id_seq; Type: SEQUENCE SET; Schema: public; Owner: deploy
+--
+
+SELECT pg_catalog.setval('requisites_id_seq', 1, true);
+
+
+--
+-- Data for Name: rich_rich_files; Type: TABLE DATA; Schema: public; Owner: deploy
+--
+
+COPY rich_rich_files (id, created_at, updated_at, rich_file_file_name, rich_file_content_type, rich_file_file_size, rich_file_updated_at, owner_type, owner_id, uri_cache, simplified_type) FROM stdin;
+\.
+
+
+--
+-- Name: rich_rich_files_id_seq; Type: SEQUENCE SET; Schema: public; Owner: deploy
+--
+
+SELECT pg_catalog.setval('rich_rich_files_id_seq', 1, false);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: deploy
+--
+
+COPY schema_migrations (version) FROM stdin;
+20170103173526
+20161127192643
+20170103173509
+20161127133313
+20161127133312
+20161128154810
+20161127192645
+20161127193048
+20161128154715
+20161127192644
+20161127142212
+20161127192926
+20170114140318
+20170114141005
+20170311081602
+20170311084933
+20170311085847
+20170311090404
+20170311090853
+20170409115227
+\.
+
+
+--
+-- Data for Name: service_item_translations; Type: TABLE DATA; Schema: public; Owner: deploy
+--
+
+COPY service_item_translations (id, service_item_id, language, service_name, created_at, updated_at) FROM stdin;
+1	2	0	EXECUTION OF ALL NECESSARY DOCUMENTS FOR REGISTRATION OF THE COMPANY “KEY READY” 	2017-03-20 13:44:06.341268	2017-03-20 13:44:06.341268
+2	3	0	PROVISION OF LEGAL ADDRESS AND CONTACT PERSON WITHIN THE TERRITORY OF ESTONIA.	2017-03-20 13:44:28.617966	2017-03-20 13:44:28.617966
+3	4	0	OPENING OF ACCOUNT CURRENT IN ONE OF BANKS.	2017-03-20 13:44:50.471736	2017-03-20 13:44:50.471736
+4	5	0	PROVISION OF FURTHER ENTERPRISE ACCOUNTING AND LEGAL SERVICES 	2017-03-20 13:45:18.553236	2017-03-20 13:45:18.553236
+5	6	0	LEGAL ADVICES	2017-03-20 13:45:36.402925	2017-03-20 13:45:36.402925
+7	8	0	REPAYMENT OF DEBTS ALL OVER THE WORLD (COLLECTION OF PAYMENT SERVICES)	2017-03-20 13:46:38.8832	2017-03-20 13:46:38.8832
+8	9	0	ASSISTANCE IN PURCHASE AND LETTING OF IMMOVABLE PROPERTY	2017-03-20 13:47:12.790071	2017-03-20 13:47:12.790071
+9	2	0	SALE OF READY-MADE COMPANY	2017-03-20 13:47:31.093073	2017-03-20 16:37:12.473026
+10	10	0	ADDITIONAL BOARD MEMBER	2017-03-20 19:12:03.889261	2017-03-20 19:12:03.889261
+11	2	1	ОФОРМЛЕННЯ ВСІХ НЕОБХІДНИХ ДОКУМЕНТІВ ДЛЯ РЕЄСТРАЦІЇ КОМПАНІЇ "ПІД КЛЮЧ"	2017-03-21 18:12:43.548427	2017-03-21 18:12:43.548427
+13	3	1	НАДАННЯ ЮРИДИЧНОЇ АДРЕСИ ТА КОНТАКТНОЇ ОСОБИ НА ТЕРИТОРІЇ ЕСТОНІЇ.	2017-03-21 18:13:21.592034	2017-03-21 18:13:21.592034
+14	8	1	ПОВЕРНЕННЯ БОРГІВ ПО ВСЬОМУ СВІТУ (ПОСЛУГИ ІНКАСО)	2017-03-21 18:13:43.606588	2017-03-21 18:13:43.606588
+15	6	1	ЮРИДИЧНІ КОНСУЛЬТАЦІЇ	2017-03-21 18:14:02.457444	2017-03-21 18:14:02.457444
+16	5	1	НАДАННЯ ПОДАЛЬШОГО БУХГАЛТЕРСЬКОГО ТА ЮРИДИЧНОГО СУПРОВОДУ ФІРМИ	2017-03-21 18:14:22.635446	2017-03-21 18:14:22.635446
+17	9	1	ДОПОМОГА В КУПІВЛІ ТА ОРЕНДІ НЕРУХОМОСТІ В ЕСТОНІЇ	2017-03-21 18:14:47.652916	2017-03-21 18:14:47.652916
+18	7	1	РЕЄСТРАЦІЯ КОМПАНІЇ В ЕСТОНІЇ	2017-03-21 18:15:13.351118	2017-03-21 18:15:13.351118
+19	10	1	ПОСЛУГА НОМІНАЛЬНОГО ДИРЕКТОРА	2017-03-21 18:15:32.937924	2017-03-21 18:15:32.937924
+20	11	1	ПРОДАЖ  ГОТОВОЇ ФІРМИ	2017-03-21 18:16:05.964467	2017-03-21 18:16:05.964467
+6	7	0	COMPANY REGISTRATION IN ESTONIA	2017-03-20 13:46:07.131617	2017-04-12 09:59:26.866611
+12	4	1	ДОПОМОГА У ВІДКРИТТІ В ОДНОМУ З БАНКІВ, ПОТОЧНОГО БАНКІВСЬКОГО РАХУНКУ.	2017-03-21 18:13:00.956236	2017-06-30 14:19:14.228412
+\.
+
+
+--
+-- Name: service_item_translations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: deploy
+--
+
+SELECT pg_catalog.setval('service_item_translations_id_seq', 20, true);
+
+
+--
+-- Data for Name: service_items; Type: TABLE DATA; Schema: public; Owner: deploy
+--
+
+COPY service_items (id, service_name, created_at, updated_at) FROM stdin;
+2	Оформление всех необходимых документов для регистрации компании “под ключ”	2017-01-03 18:37:39.377893	2017-01-03 18:37:39.377893
+3	Предоставление юридического адреса и контактное лицо на территории Эстонии .	2017-01-03 18:37:39.380502	2017-02-15 07:30:24.84979
+8	Возврат долгов по всему миру  (услуги инкассо)	2017-01-03 18:37:39.396369	2017-02-15 07:30:39.354617
+6	Юридические консультации	2017-01-03 18:37:39.389987	2017-02-15 07:30:48.240938
+5	Предоставление дальнейшего бухгалтерского и юридического сопровождения фирмы	2017-01-03 18:37:39.386942	2017-02-15 07:31:07.156527
+9	Помощь в покупке и аренде недвижимости в Эстонии	2017-02-15 07:31:39.074775	2017-02-15 07:31:39.074775
+7	Регистрация компании в Эстонии	2017-01-03 18:37:39.393007	2017-02-18 15:55:53.096302
+10	Услуга номинального директора	2017-02-28 16:54:40.377207	2017-02-28 16:54:40.377207
+11	Продажа готовой фирмы	2017-03-19 07:36:41.344567	2017-03-19 07:36:41.344567
+4	Помощь в открытии в одном из банков, текущего банковского счета.	2017-01-03 18:37:39.383208	2017-06-30 14:18:38.477817
+\.
+
+
+--
+-- Name: service_items_id_seq; Type: SEQUENCE SET; Schema: public; Owner: deploy
+--
+
+SELECT pg_catalog.setval('service_items_id_seq', 11, true);
+
+
+--
+-- Data for Name: whies; Type: TABLE DATA; Schema: public; Owner: deploy
+--
+
+COPY whies (id, text, created_at, updated_at) FROM stdin;
+1	<ol>\r\n\t<li style="text-align: justify;">\r\n\t<h4>Мы - находимся непосредственно в Эстонии, следим за изменениями законодательства и ситуацией страны вцелом, предлагая Вам только актуальную информацию из первоисточника.</h4>\r\n\t</li>\r\n\t<li style="text-align: justify;">\r\n\t<h4>Выбирая нас, Вы получаете не просто компанию в одной из передовых стран ЕС, а еще и постоянную консалтинговую поддержку Вашего бизнеса&nbsp;</h4>\r\n\t</li>\r\n\t<li style="text-align: justify;">\r\n\t<h4>В нашей компании работает команда специалистов, которая поможет Вам начать и вести крупный, средний и малый бизнес в Эстонии</h4>\r\n\t</li>\r\n\t<li style="text-align: justify;">\r\n\t<h4>Вы платите только за положительный результат нашей работы</h4>\r\n\t</li>\r\n</ol>\r\n	2017-01-03 18:37:39.409097	2017-02-18 15:52:20.153455
+\.
+
+
+--
+-- Name: whies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: deploy
+--
+
+SELECT pg_catalog.setval('whies_id_seq', 1, true);
+
+
+--
+-- Data for Name: why_translations; Type: TABLE DATA; Schema: public; Owner: deploy
+--
+
+COPY why_translations (id, why_id, language, text, created_at, updated_at) FROM stdin;
+1	1	0	The reasons why you shall choose us:\r\n\r\n\r\nWe are located directly within the territory of Estonia, we are keeping track of changes to legislation and country situation in whole, offering you only current information straight from the tin.\r\nChoosing us, you will receive not only a Company in one of EU advanced countries, but also permanent consulting assistance of your business.\r\nOur team of experts will help you to start and run large, medium and small-sized business in Estonia\r\nYou shall pay just for positive result of our work\r\n	2017-03-20 13:48:30.047087	2017-03-20 13:48:30.047087
+2	1	1	Чому саме ми:\r\nМи знаходимося безпосередньо в Естонії, стежимо за змінами законодавства та ситуацією країни в цілому, пропонуючи Вам тільки актуальну інформацію з першоджерела.\r\nОбираючи нас, Ви отримуєте не просто компанію у одній з передових країн ЄС, а ще й постійну консалтингову підтримку Вашого бізнесу\r\nУ нашій компанії працює команда фахівців, яка допоможе Вам почати і вести великий, середній та малий бізнес в Естонії\r\nВи платите тільки за позитивний результат нашої роботи\r\n	2017-03-21 18:16:44.686042	2017-03-21 18:16:44.686042
+\.
+
+
+--
+-- Name: why_translations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: deploy
+--
+
+SELECT pg_catalog.setval('why_translations_id_seq', 2, true);
+
+
+--
+-- Name: active_admin_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: deploy; Tablespace: 
+--
+
+ALTER TABLE ONLY active_admin_comments
+    ADD CONSTRAINT active_admin_comments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: admin_users_pkey; Type: CONSTRAINT; Schema: public; Owner: deploy; Tablespace: 
+--
+
+ALTER TABLE ONLY admin_users
+    ADD CONSTRAINT admin_users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: deploy; Tablespace: 
+--
+
+ALTER TABLE ONLY ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: article_items_pkey; Type: CONSTRAINT; Schema: public; Owner: deploy; Tablespace: 
+--
+
+ALTER TABLE ONLY article_items
+    ADD CONSTRAINT article_items_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: article_items_translations_pkey; Type: CONSTRAINT; Schema: public; Owner: deploy; Tablespace: 
+--
+
+ALTER TABLE ONLY article_items_translations
+    ADD CONSTRAINT article_items_translations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: company_type_translations_pkey; Type: CONSTRAINT; Schema: public; Owner: deploy; Tablespace: 
+--
+
+ALTER TABLE ONLY company_type_translations
+    ADD CONSTRAINT company_type_translations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: company_types_pkey; Type: CONSTRAINT; Schema: public; Owner: deploy; Tablespace: 
+--
+
+ALTER TABLE ONLY company_types
+    ADD CONSTRAINT company_types_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: contacts_pkey; Type: CONSTRAINT; Schema: public; Owner: deploy; Tablespace: 
+--
+
+ALTER TABLE ONLY contacts
+    ADD CONSTRAINT contacts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: price_packs_pkey; Type: CONSTRAINT; Schema: public; Owner: deploy; Tablespace: 
+--
+
+ALTER TABLE ONLY price_packs
+    ADD CONSTRAINT price_packs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: price_translations_pkey; Type: CONSTRAINT; Schema: public; Owner: deploy; Tablespace: 
+--
+
+ALTER TABLE ONLY price_translations
+    ADD CONSTRAINT price_translations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: prices_pkey; Type: CONSTRAINT; Schema: public; Owner: deploy; Tablespace: 
+--
+
+ALTER TABLE ONLY prices
+    ADD CONSTRAINT prices_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: requests_pkey; Type: CONSTRAINT; Schema: public; Owner: deploy; Tablespace: 
+--
+
+ALTER TABLE ONLY requests
+    ADD CONSTRAINT requests_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: requisites_pkey; Type: CONSTRAINT; Schema: public; Owner: deploy; Tablespace: 
+--
+
+ALTER TABLE ONLY requisites
+    ADD CONSTRAINT requisites_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: rich_rich_files_pkey; Type: CONSTRAINT; Schema: public; Owner: deploy; Tablespace: 
+--
+
+ALTER TABLE ONLY rich_rich_files
+    ADD CONSTRAINT rich_rich_files_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: deploy; Tablespace: 
+--
+
+ALTER TABLE ONLY schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: service_item_translations_pkey; Type: CONSTRAINT; Schema: public; Owner: deploy; Tablespace: 
+--
+
+ALTER TABLE ONLY service_item_translations
+    ADD CONSTRAINT service_item_translations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: service_items_pkey; Type: CONSTRAINT; Schema: public; Owner: deploy; Tablespace: 
+--
+
+ALTER TABLE ONLY service_items
+    ADD CONSTRAINT service_items_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: whies_pkey; Type: CONSTRAINT; Schema: public; Owner: deploy; Tablespace: 
+--
+
+ALTER TABLE ONLY whies
+    ADD CONSTRAINT whies_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: why_translations_pkey; Type: CONSTRAINT; Schema: public; Owner: deploy; Tablespace: 
+--
+
+ALTER TABLE ONLY why_translations
+    ADD CONSTRAINT why_translations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_active_admin_comments_on_author_type_and_author_id; Type: INDEX; Schema: public; Owner: deploy; Tablespace: 
+--
+
+CREATE INDEX index_active_admin_comments_on_author_type_and_author_id ON active_admin_comments USING btree (author_type, author_id);
+
+
+--
+-- Name: index_active_admin_comments_on_namespace; Type: INDEX; Schema: public; Owner: deploy; Tablespace: 
+--
+
+CREATE INDEX index_active_admin_comments_on_namespace ON active_admin_comments USING btree (namespace);
+
+
+--
+-- Name: index_active_admin_comments_on_resource_type_and_resource_id; Type: INDEX; Schema: public; Owner: deploy; Tablespace: 
+--
+
+CREATE INDEX index_active_admin_comments_on_resource_type_and_resource_id ON active_admin_comments USING btree (resource_type, resource_id);
+
+
+--
+-- Name: index_admin_users_on_email; Type: INDEX; Schema: public; Owner: deploy; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_admin_users_on_email ON admin_users USING btree (email);
+
+
+--
+-- Name: index_admin_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: deploy; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_admin_users_on_reset_password_token ON admin_users USING btree (reset_password_token);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
