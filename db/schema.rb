@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170409115227) do
+ActiveRecord::Schema.define(version: 20170706172502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,19 +93,42 @@ ActiveRecord::Schema.define(version: 20170409115227) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "price_pack_comments", force: :cascade do |t|
+    t.text     "text"
+    t.integer  "language"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "price_pack_item_price_packs", force: :cascade do |t|
+    t.integer  "price_pack_item_id", null: false
+    t.integer  "price_pack_id",      null: false
+    t.boolean  "value"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  create_table "price_pack_item_translations", force: :cascade do |t|
+    t.integer  "price_pack_item_id"
+    t.integer  "language"
+    t.text     "name"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  create_table "price_pack_items", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "order"
+  end
+
   create_table "price_packs", force: :cascade do |t|
-    t.string   "name",                             null: false
-    t.boolean  "company",          default: false
-    t.boolean  "notary",           default: false
-    t.boolean  "jur_address",      default: false
-    t.boolean  "contact_person",   default: false
-    t.boolean  "account",          default: false
-    t.boolean  "remote_open",      default: false
-    t.boolean  "vat",              default: false
-    t.boolean  "included_capital", default: false
-    t.float    "price",            default: 0.0
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.string   "name",                      null: false
+    t.float    "price",       default: 0.0
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "order_index"
   end
 
   create_table "price_translations", force: :cascade do |t|

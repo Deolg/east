@@ -27,13 +27,12 @@ tbody td:last-child { background: #fff; text-align: center; border: 1px solid #c
 
 </style>
 
-<% if !@price_packs.blank? %>
+<% if !@price_packs.count.zero? %>
   <h1><%= t('price_packs.price_packs') %></h1>
   <table>
-    <colgroup></colgroup>
-    <colgroup></colgroup>
-    <colgroup></colgroup>
-    <colgroup></colgroup>
+    <% @price_packs.map do %>
+      <colgroup></colgroup>
+    <% end %>
 
     <thead>
       <tr>
@@ -47,54 +46,20 @@ tbody td:last-child { background: #fff; text-align: center; border: 1px solid #c
     </thead>
 
     <tbody>
-      <tr>
-        <th><span><%= t('price_packs.company') %></span></th>
-        <% @price_packs.pluck(:company).each do |comp| %>
-          <td><%= icon comp %></td>
-        <% end %>
-      </tr>
-      <tr>
-        <th><span><%= t('price_packs.notary') %></span></th>
-        <% @price_packs.pluck(:notary).each do |notary| %>
-          <td><%= icon notary %></td>
-        <% end %>
-      </tr>
-      <tr>
-        <th><span><%= t('price_packs.legal_address') %></span></th>
-        <% @price_packs.pluck(:jur_address).each do |jur| %>
-          <td><%= icon jur %> </span></td>
-        <% end %>
-      </tr>
-      <tr>
-        <th><span><%= t('price_packs.contact_person') %></span></th>
-        <% @price_packs.pluck(:contact_person).each do |cont| %>
-          <td><%= icon cont %></td>
-        <% end %>
-      </tr>
-      <tr>
-        <th><span><%= t('price_packs.account') %></span></th>
-        <% @price_packs.pluck(:account).each do |acc| %>
-          <td><%= icon acc %></td>
-        <% end %>
-      </tr>
-      <tr>
-        <th><span><%= t('price_packs.remote_open') %></span></th>
-        <% @price_packs.pluck(:remote_open).each do |r| %>
-          <td><%= icon r %></td>
-        <% end %>
-      </tr>
-      <tr>
-        <th><span><%= t('price_packs.vat') %></span></th>
-        <% @price_packs.pluck(:vat).each do |vat| %>
-          <td><%= icon vat %></td>
-        <% end %>
-      </tr>
-      <tr>
-        <th><span><%= t('price_packs.included_capital') %></span></th>
-        <% @price_packs.pluck(:included_capital).each do |incl| %>
-          <td><%= icon incl %></td>
-        <% end %>
-      </tr>
+      <% @price_pack_items.each do |item| %>
+        <tr>
+          <th><span><%=
+          if locale == :ru
+            item.name
+          else
+            item.price_pack_item_translations.where(language: locale).first&.name
+          end
+          %></span></th>
+          <% @price_packs.each do |pack| %>
+            <td><%= icon (pack.price_pack_items.where(id: item.id).any?) %></td>
+          <% end %>
+        </tr>
+      <% end %>
       <tr>
         <th><span><%= t('price_packs.pack_price') %></span></th>
         <% @price_packs.pluck(:price).each do |pr| %>
@@ -103,4 +68,9 @@ tbody td:last-child { background: #fff; text-align: center; border: 1px solid #c
       </tr>
     </tbody>
   </table>
+  <% unless PricePackComment.where(language: locale).count.zero? %>
+    <div class='text' style='margin-top: 50px'>
+      <%= PricePackComment.where(language: locale).last.text.html_safe %>
+    </div>
+  <% end %>
 <% end %>
