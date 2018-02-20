@@ -31,6 +31,8 @@ en:
   what_question: "What is your question?"
   what_phone: "How we could respond you?"
   ask_question: "Ask question"
+  all: "All"
+  ask_question_error: "fields are required."
   price_packs:
     price_packs: 'Service Packs'
     company: 'Company'

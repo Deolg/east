@@ -26,6 +26,7 @@
 </div>
   </div>
   <div id="main">
+
     <div id="banner">
       <img src="static/images/pic03.jpg" alt="" class="image-full" />
     </div>
@@ -45,15 +46,17 @@
         <h2><%= t('services') %></h2>
         <span class="byline"></span>
       </div>
-      <ul class="style1 services">
-        <% @service_items.each do |service| %>
-          <li>
-            <!-- <p class="date"><a href="#">Jan<b>05</b></a></p> -->
-            <h3><%= service.service_name %></h3>
-            <!-- <p><a href="#">Consectetuer adipiscing elit. Nam pede erat, porta eu, lobortis eget, tempus et, tellus. Etiam neque. Vivamus consequat lorem at nisl. Nullam non wisi a sem semper eleifend. Etiam non felis. Donec ut ante.</a></p> -->
-          </li>
-        <% end %>
-      </ul>
+      <div class='text'>
+        <ol class="style1 services">
+          <% @service_items.each do |service, index| %>
+
+            <li>
+              <h4><%= service.service_name %></h4>
+              <h4><%= index%></h4>
+            </li>
+          <% end %>
+        </ol>
+      </div>
     </div>
     <% if @company_types.count > 0 %>
     <div id='#'>
@@ -149,7 +152,22 @@
                   <h3>Viber</h3>
                   <p><%=@contacts.try(:viber)%></p><br>
               </div>
+
             </div>
+
+            <div class="row about-me">
+              <div class="photo">
+                <% if @contacts.image_stored? %>
+                  <%= image_tag @contacts.image.url, width: 300%>
+                <% end %>
+              </div>
+
+              <div class="des">
+                <h4><%= @contacts.description%></h4><br>
+              </div>
+            </div>
+
+
             <div class='row'>
               <div class='social'>
                 <a class="btn btn-social-icon btn-lg btn-facebook" href='https://www.facebook.com/Erezidency/'>

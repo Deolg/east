@@ -31,6 +31,8 @@ ru:
   what_question: "Ваш вопрос?"
   what_phone: "Как с Вами можно связаться?"
   ask_question: "Задать вопрос"
+  all: "Все"
+  ask_question_error: "поля обязательны для заполнения."
   time:
     formats:
       long: "%Y-%m-%d %H:%M:%S"

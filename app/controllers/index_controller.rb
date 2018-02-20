@@ -14,8 +14,13 @@ class IndexController < ApplicationController
 
   def create_request
     @request = Request.new request_params
-    @request.save
-    redirect_to :back
+
+    if verify_recaptcha(model: @request) && @request.save
+      render :json => { :success => true, msg:'ok'}
+    else
+      render :json => { :success => false, msg:'error'}
+    end
+
   end
 
   private
