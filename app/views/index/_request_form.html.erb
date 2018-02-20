@@ -1,6 +1,6 @@
 <div id="alert" class="alert alert-danger alert-dismissable fade in">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  <strong><%= t('all') %></strong><%= t('ask_question_error') %>
+  <strong><%= t('all') %></strong> <%= t('ask_question_error') %>
 </div>
 
 <%=form_for @request, url: {action: "create_request"}, html: {class: "nifty_form",:remote=>false} do |f| %>
@@ -14,7 +14,9 @@
     <%= f.text_field :address, class: "form-control", placeholder: t('what_phone') %>
   </div>
 
-  <%= recaptcha_tags %>
+  <div class="capcha" >
+    <%= recaptcha_tags %>
+  </div>
 
   <%= f.submit t('ask_question'), class: 'btn btn-primary' ,data: { disable_with: false } %>
 

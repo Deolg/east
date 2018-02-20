@@ -31,7 +31,7 @@ ua:
   what_question: "Ваше питання?"
   what_phone: "Як з Вами можно зв'язатися?"
   ask_question: "Задати запитання"
-  all: "Усе"
+  all: "Всі"
   ask_question_error: "поля обов'язкові для заповнення."
   time:
     formats:

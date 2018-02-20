@@ -59,13 +59,10 @@ $(document).ready(function(){
                     location.reload();
                 }
                 else {
+                    $('.capcha').addClass('error');
                     msg.show();
                 }
             }
         });
     });
-
-
-
-
 });
