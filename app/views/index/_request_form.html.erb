@@ -1,6 +1,11 @@
-<%= form_for @request, url: {action: "create_request"}, html: {class: "nifty_form"}, method: :post do |f| %>
+<div id="alert" class="alert alert-danger alert-dismissable fade in">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong><%= t('all') %></strong><%= t('ask_question_error') %>
+</div>
+
+<%=form_for @request, url: {action: "create_request"}, html: {class: "nifty_form",:remote=>false} do |f| %>
   <div class="form-group">
-    <%= f.text_field :from, class: "form-control", placeholder: t('what_name')%>
+    <%= f.text_field :from, class: "form-control ", placeholder: t('what_name')%>
   </div>
   <div class="form-group">
     <%= f.text_area :body, size: "60x12", class: "form-control", placeholder: t('what_question')%>
@@ -8,5 +13,9 @@
   <div class="form-group"> 
     <%= f.text_field :address, class: "form-control", placeholder: t('what_phone') %>
   </div>
-  <%= f.submit t('ask_question'), class: 'btn btn-primary' %>
+
+  <%= recaptcha_tags %>
+
+  <%= f.submit t('ask_question'), class: 'btn btn-primary' ,data: { disable_with: false } %>
+
 <% end %>

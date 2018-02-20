@@ -104,6 +104,15 @@
 /* List Styles                                                                   */
 /*********************************************************************************/
 
+  ol.style1{
+      list-style-type:decimal;
+      text-align: left;
+      margin-left: 31px;
+  }
+  ol.style1 li{
+      font-size: 16px;
+      font-weight: bold;
+  }
   ul.style1
   {
     margin: 0 auto;
@@ -112,14 +121,17 @@
     overflow: hidden;
     list-style: none;
     text-align: left;
-    color: #6c6c6c
+    color: #6c6c6c;
+    list-style-type:decimal;
   }
   
   ul.style1 li
   {
-    padding: 1.6em 0em 0em 0em;
-    margin: 0 0 2.5em 0;
-    border-top: 1px solid rgba(0,0,0,.1); 
+    /*padding: 1.6em 0em 0em 0em;*/
+    /*margin: 0 0 2.5em 0;*/
+    /*border-top: 1px solid rgba(0,0,0,.1); */
+
+
   }
   
   ul.style1 li:first-child
@@ -299,7 +311,7 @@
   
   .box1,
   .box2,
-  .box3,
+  .box3
   {
     float: left;
     margin-right: 20px;
@@ -322,7 +334,7 @@
   }
 
   .boxA,
-  .boxB,
+  .boxB
   {
     float: left;
     margin-right: 20px;
@@ -581,3 +593,28 @@
 .text ul {
   padding-left: 30px;
 }
+
+/*********************************************************************************/
+/* Global                                                                        */
+/*********************************************************************************/
+
+#alert{
+    display: none;
+}
+
+
+/*********************************************************************************/
+/* Contacts                                                                        */
+/*********************************************************************************/
+
+.about-me{
+    margin-top: 10px;
+    text-align: left;
+}
+
+
+.about-me .photo{
+    float: left;
+    padding-right: 27px;
+}
+
