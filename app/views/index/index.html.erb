@@ -53,9 +53,6 @@
             <li>
               <h4><%= service.service_name %></h4>
               <h4><%= index%></h4>
-              <!-- <p class="date"><a href="#">Jan<b>05</b></a></p> -->
-              <!--<h3><%= service.service_name %></h3>-->
-              <!-- <p><a href="#">Consectetuer adipiscing elit. Nam pede erat, porta eu, lobortis eget, tempus et, tellus. Etiam neque. Vivamus consequat lorem at nisl. Nullam non wisi a sem semper eleifend. Etiam non felis. Donec ut ante.</a></p> -->
             </li>
           <% end %>
         </ol>
@@ -161,7 +158,7 @@
             <div class="row about-me">
               <div class="photo">
                 <% if @contacts.image_stored? %>
-                  <%= image_tag @contacts.image.url, width: 300%>
+                  <%= image_tag @contacts.image.url, height: 193%>
                 <% end %>
               </div>
 

@@ -2,7 +2,7 @@
 lock '3.6.1'
 
 set :application, 'deploy'
-set :repo_url, 'git@bitbucket.org:obroshnij/est.git'
+set :repo_url, 'https://github.com/Deolg/east.git'
 set :branch, 'master'
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -28,6 +28,8 @@ set :stages, %w(production)
 
 # Default value for :linked_files is []
 # append :linked_files, 'config/database.yml', 'config/secrets.yml'
+#append :linked_files, '~/eresidency/shared/.env'
+set :linked_files, %w(.env)
 
 # Default value for linked_dirs is []
 # append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system'
